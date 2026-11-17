@@ -8,8 +8,9 @@
 <meta name="description" content="Dr. Assis Russo, cirurgião-dentista na Asa Sul, Brasília. Cirurgia de siso do caso simples ao complexo, com radiografia, tomografia quando precisa e dois retornos. Atendimento particular e individual. Agende pelo WhatsApp.">
 <meta property="og:title" content="Cirurgia de siso em Brasília · Dr. Assis Russo">
 <meta property="og:description" content="Do siso simples ao caso complexo, com cada passo explicado antes. Agende pelo WhatsApp.">
-<meta property="og:image" content="img/centro-cirurgico-1131-m.jpg">
-<meta name="theme-color" content="#070B12">
+<meta property="og:image" content="img/assis-jaleco-m.jpg">
+<meta name="theme-color" content="#FBF8F2">
+<link rel="preload" href="modelos/cranio.bin" as="fetch" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -56,9 +57,9 @@ h2 em,h1 em{font-style:italic;color:var(--ouro)}
 .rotulo{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase}
 
 /* topo */
-.topo{position:fixed;inset:0 0 auto;z-index:60;color:var(--luz);transition:background .4s,color .4s,box-shadow .4s}
+.topo{position:fixed;inset:0 0 auto;z-index:60;color:var(--tinta);transition:background .4s,color .4s,box-shadow .4s}
 .topo .wrap{display:flex;justify-content:space-between;align-items:center;height:76px}
-.topo::before{content:"";position:absolute;inset:0 0 -36px;z-index:-1;pointer-events:none;background:linear-gradient(to bottom,rgba(7,11,18,.94),rgba(7,11,18,.7) 55%,rgba(7,11,18,0));transition:opacity .4s}
+.topo::before{content:"";position:absolute;inset:0 0 -36px;z-index:-1;pointer-events:none;background:linear-gradient(to bottom,rgba(251,248,242,.96),rgba(251,248,242,.75) 55%,rgba(251,248,242,0));transition:opacity .4s}
 .topo.claro::before{opacity:0}
 .topo.claro{background:rgba(243,238,228,.82);backdrop-filter:saturate(1.3) blur(14px);-webkit-backdrop-filter:saturate(1.3) blur(14px);color:var(--tinta);box-shadow:0 1px 0 var(--linha)}
 .marca{display:flex;align-items:center;gap:12px;text-decoration:none}
@@ -84,75 +85,109 @@ h2 em,h1 em{font-style:italic;color:var(--ouro)}
 .link-fino:hover{opacity:1}
 .link-fino svg{width:16px;height:16px}
 
-/* ===== jornada: o hero que atravessa a página ===== */
-.jornada{position:relative;background:var(--noite);color:var(--luz);height:calc(var(--n,8) * 92vh + 100vh)}
-.palco{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
-.raio{position:absolute;inset:0;width:100%;height:100%;display:block}
-.palco::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E")}
-.vinheta{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(to top,var(--noite) 0%,rgba(7,11,18,.92) 30%,rgba(7,11,18,0) 62%),radial-gradient(120% 80% at 50% 40%,transparent 50%,rgba(7,11,18,.7) 100%)}
-@media(min-width:900px){.vinheta{background:linear-gradient(to right,var(--noite) 0%,rgba(7,11,18,.9) 28%,rgba(7,11,18,0) 52%),radial-gradient(110% 90% at 65% 50%,transparent 55%,rgba(7,11,18,.75) 100%)}}
+/* ===== jornada: o hero é uma prancha de atlas, 4 rolagens ===== */
+.jornada{position:relative;background:var(--papel);color:var(--tinta);height:calc(var(--n,4) * 96vh + 100vh)}
+.palco{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--papel)}
+.raio{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity 1.2s var(--ease-out)}
+.com-3d .raio{opacity:1}
+/* papel da prancha: grão leve e a moldura fina do livro */
+.palco::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.05;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E")}
+.moldura{position:absolute;z-index:1;inset:84px 12px 12px;border:1px solid rgba(18,24,38,.16);pointer-events:none}
+.moldura::after{content:"";position:absolute;inset:5px;border:1px solid rgba(18,24,38,.07)}
+.legenda{position:absolute;z-index:3;right:max(28px,calc((100vw - 1200px) / 2 + 28px));bottom:28px;font-family:var(--serifa);font-style:italic;font-size:17px;color:var(--cinza);text-align:right;line-height:1.3;max-width:min(360px,60vw);transition:opacity .4s}
+.legenda b{font-style:normal;font-weight:600;color:var(--tinta);margin-right:6px}
+.vinheta{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(to top,var(--papel) 0%,rgba(251,248,242,.94) 34%,rgba(251,248,242,0) 56%)}
+@media(min-width:900px){
+  .moldura{inset:92px 24px 24px}
+  .vinheta{background:linear-gradient(to right,var(--papel) 0%,rgba(251,248,242,.9) 30%,rgba(251,248,242,0) 50%)}
+}
 
 .capitulos{position:absolute;z-index:2;left:0;right:0;bottom:0;padding:0 24px 40px}
 .cap{max-width:540px}
-.js .cap{position:absolute;left:24px;right:24px;bottom:40px;opacity:0;visibility:hidden;transform:translateY(18px);transition:opacity .6s var(--ease-out),transform .6s var(--ease-out),visibility 0s .6s}
+.js .cap{position:absolute;left:28px;right:28px;bottom:40px;opacity:0;visibility:hidden;transform:translateY(18px);transition:opacity .6s var(--ease-out),transform .6s var(--ease-out),visibility 0s .6s}
 .js .cap.ativo{opacity:1;visibility:visible;transform:none;transition:opacity .7s var(--ease-out) .08s,transform .7s var(--ease-out) .08s,visibility 0s}
-html:not(.js) .cap{padding:40px 0;border-top:1px solid var(--noite-linha)}
+html:not(.js) .cap{padding:40px 0;border-top:1px solid var(--linha)}
 html:not(.js) .jornada{height:auto}
 html:not(.js) .palco{position:relative;height:auto;padding-top:90px}
-html:not(.js) .raio,html:not(.js) .vinheta,html:not(.js) .trilho{display:none}
+html:not(.js) .raio,html:not(.js) .vinheta,html:not(.js) .trilho,html:not(.js) .moldura,html:not(.js) .legenda{display:none}
 html:not(.js) .capitulos{position:relative}
-.cap .rotulo{color:var(--ouro);display:flex;align-items:center;gap:12px;margin-bottom:14px}
-.cap .rotulo::before{content:"";width:28px;height:1px;background:currentColor}
-.cap h1{font-size:clamp(40px,min(7.2vw,10.5vh),96px);line-height:.96;letter-spacing:-.02em;margin-bottom:20px}
-.cap h2{font-size:clamp(32px,min(5vw,7.5vh),64px);margin-bottom:16px}
-.cap p{color:var(--luz-2);font-size:clamp(16px,1.5vw,18px);max-width:46ch}
-.cap p b{color:var(--luz);font-weight:500}
+.cap .prancha{font-family:var(--serifa);font-style:italic;font-size:19px;color:var(--ouro-escuro);margin-bottom:14px}
+.cap h1{font-size:clamp(40px,min(6.4vw,9.6vh),88px);line-height:.98;letter-spacing:-.02em;margin-bottom:22px}
+.cap h2{font-size:clamp(34px,min(4.8vw,7.4vh),62px);margin-bottom:16px}
+.cap h1 em,.cap h2 em{color:var(--ouro-escuro)}
+.cap p{color:var(--cinza);font-size:clamp(16px,1.4vw,18px);max-width:44ch}
+.cap p b{color:var(--tinta);font-weight:600}
 .cap .acoes{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;margin-top:28px}
-.cap ul{list-style:none;margin-top:22px;display:grid;gap:10px;max-width:46ch}
-.cap li{display:flex;gap:12px;font-size:15px;color:var(--luz-2);padding:12px 14px;border:1px solid var(--noite-linha);border-radius:14px;background:rgba(13,20,32,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-.cap li b{color:var(--luz);font-weight:600;display:block}
-.cap li i{font-style:normal;font-family:var(--serifa);font-size:22px;line-height:1;color:var(--ouro);flex:none;width:22px}
+.cap .link-fino{color:var(--tinta)}
+.cap .marcadores{list-style:none;margin-top:20px;display:grid;gap:8px;max-width:44ch}
+.cap .marcadores li{display:flex;align-items:baseline;gap:12px;font-size:15.5px;color:var(--cinza)}
+.cap .marcadores i{flex:none;width:12px;height:12px;border-radius:50%;transform:translateY(1px)}
+.cap .marcadores b{color:var(--tinta);font-weight:600}
 @media(min-width:900px){
   .capitulos{top:0;padding:0}
-  /* centraliza no espaço abaixo do menu, não na tela inteira */
-  .js .cap{left:max(24px,calc((100vw - 1200px) / 2 + 24px));right:auto;bottom:auto;top:calc(50% + 38px);transform:translateY(calc(-50% + 22px));width:min(540px,40vw)}
+  .js .cap{left:max(56px,calc((100vw - 1200px) / 2 + 56px));right:auto;bottom:auto;top:calc(50% + 40px);transform:translateY(calc(-50% + 22px));width:min(520px,38vw)}
   .js .cap.ativo{transform:translateY(-50%)}
 }
 @media(max-width:899px){
-  .cap h2{font-size:clamp(32px,9vw,44px)}
-  .cap li{padding:10px 12px;font-size:14px}
+  .cap h1{font-size:clamp(36px,10.4vw,46px)}
+  .cap h2{font-size:clamp(30px,8.6vw,40px)}
+  .cap p{font-size:15.5px}
+  .cap .acoes{margin-top:20px}
+  .cap .marcadores{display:none}
+  .etq b{font-size:15.5px}
+  .etq i{margin-right:30px}
+  .etq i::after{width:22px}
+  .etq.esq i{margin:0 -3.5px 0 30px}
+  .legenda{left:28px;right:auto;top:96px;bottom:auto;text-align:left;font-size:15px}
 }
 
-.trilho{position:absolute;z-index:3;right:max(16px,calc((100vw - 1200px) / 2 + 8px));top:50%;transform:translateY(-50%);display:none;list-style:none}
-.trilho li + li{margin-top:4px}
-.trilho button{display:flex;align-items:center;justify-content:flex-end;gap:12px;min-height:34px;padding:0 4px;font-size:12px;letter-spacing:.08em;color:var(--luz-2);opacity:.55;transition:opacity .3s,color .3s}
-.trilho button span{opacity:0;transform:translateX(6px);transition:opacity .3s,transform .3s var(--ease)}
-.trilho button i{width:22px;height:1px;background:currentColor;transition:width .4s var(--ease)}
-.trilho button:hover,.trilho button[aria-current="step"]{opacity:1;color:var(--luz)}
+/* as quatro pranchas, à direita */
+.trilho{position:absolute;z-index:3;right:44px;top:50%;transform:translateY(-50%);display:none;list-style:none}
+.trilho li + li{margin-top:2px}
+.trilho button{display:flex;align-items:center;justify-content:flex-end;gap:12px;min-height:40px;padding:0 4px;color:var(--cinza);opacity:.6;transition:opacity .3s,color .3s}
+.trilho button span{font-size:13px;opacity:0;transform:translateX(6px);transition:opacity .3s,transform .3s var(--ease)}
+.trilho button b{font-family:var(--serifa);font-size:18px;font-weight:600;width:22px;text-align:center}
+.trilho button:hover,.trilho button[aria-current="step"]{opacity:1;color:var(--tinta)}
 .trilho button:hover span,.trilho button[aria-current="step"] span{opacity:1;transform:none}
-.trilho button[aria-current="step"] i{width:42px;background:var(--ouro)}
+.trilho button[aria-current="step"] b{color:var(--ouro-escuro)}
 @media(min-width:900px){.trilho{display:block}}
-.progresso{position:absolute;z-index:3;left:0;bottom:0;height:2px;width:100%;background:var(--ouro);transform-origin:left;transform:scaleX(var(--p,0))}
-.rolar{position:absolute;z-index:3;left:50%;bottom:22px;transform:translateX(-50%);display:none;flex-direction:column;align-items:center;gap:8px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--luz-2);transition:opacity .4s}
-.rolar i{width:1px;height:38px;background:linear-gradient(var(--ouro),transparent);animation:desce 2s var(--ease) infinite}
+.progresso{position:absolute;z-index:3;left:0;bottom:0;height:2px;width:100%;background:var(--ouro-escuro);transform-origin:left;transform:scaleX(var(--p,0))}
+.rolar{position:absolute;z-index:3;left:50%;bottom:30px;transform:translateX(-50%);display:none;flex-direction:column;align-items:center;gap:8px;font-size:13px;color:var(--cinza);transition:opacity .4s}
+.rolar i{width:1px;height:38px;background:linear-gradient(var(--ouro-escuro),transparent);animation:desce 2s var(--ease) infinite}
 @keyframes desce{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 @media(min-width:900px){.rolar{display:flex}}
 
-/* cena 3D */
-.palco{background:radial-gradient(60% 55% at 66% 58%,#15213a 0%,var(--noite) 70%)}
-.com-3d .palco{background:var(--noite)}
+/* etiquetas de atlas presas ao 3D: ponto, fio e o nome em itálico */
 .etiquetas{position:absolute;inset:0;z-index:2;pointer-events:none}
-.etq{position:absolute;left:0;top:0;display:flex;align-items:center;height:0;opacity:0;white-space:nowrap;font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--luz);text-shadow:0 1px 10px rgba(7,11,18,.95);will-change:transform,opacity}
-.etq i{position:relative;width:9px;height:9px;margin:0 58px 0 -4.5px;border-radius:50%;background:var(--ouro);box-shadow:0 0 0 4px rgba(200,164,106,.22),0 0 18px rgba(200,164,106,.6);flex:none;animation:pulsa 2.2s var(--ease) infinite}
-.etq i::after{content:"";position:absolute;left:13px;top:4px;width:40px;height:1px;background:linear-gradient(90deg,var(--ouro),rgba(237,232,223,.5))}
-@keyframes pulsa{0%,100%{box-shadow:0 0 0 4px rgba(200,164,106,.22),0 0 18px rgba(200,164,106,.6)}50%{box-shadow:0 0 0 9px rgba(200,164,106,0),0 0 18px rgba(200,164,106,.6)}}
-.etq b{font-weight:500;padding:7px 12px 6px;border-radius:999px;background:rgba(7,11,18,.74);border:1px solid rgba(237,232,223,.16);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);text-shadow:none}
+.etq{position:absolute;left:0;top:0;display:flex;align-items:center;height:0;opacity:0;white-space:nowrap;color:var(--tinta);will-change:transform,opacity}
+.etq i{position:relative;flex:none;width:7px;height:7px;margin:0 50px 0 -3.5px;border-radius:50%;background:var(--tinta);box-shadow:0 0 0 3px rgba(251,248,242,.85)}
+.etq i::after{content:"";position:absolute;left:10px;top:3px;width:40px;height:1px;background:currentColor;opacity:.55}
+.etq b{font-family:var(--serifa);font-style:italic;font-weight:600;font-size:19px;line-height:1;text-shadow:0 0 6px var(--papel),0 0 2px var(--papel)}
+.etq small{font-family:var(--sans);font-style:normal;font-size:12.5px;font-weight:500;color:var(--cinza);margin-left:8px;text-shadow:0 0 6px var(--papel)}
 .etq.esq{flex-direction:row-reverse}
-.etq.esq i{margin:0 -4.5px 0 58px}
-.etq.esq i::after{left:auto;right:13px;background:linear-gradient(270deg,var(--ouro),rgba(237,232,223,.5))}
+.etq.esq i{margin:0 -3.5px 0 50px}
+.etq.esq i::after{left:auto;right:10px}
+.etq.esq small{margin:0 8px 0 0}
+.etq.nervo{color:#7A5A00}.etq.nervo i{background:#E2AE16}
+.etq.seio{color:#245C93}.etq.seio i{background:#4F8FCB}
+.etq.raizes b{font-size:17px}
+.numeros{position:absolute;inset:0;z-index:2;pointer-events:none}
+.numeros span{position:absolute;left:0;top:0;width:22px;margin:-9px 0 0 -11px;text-align:center;font-size:11.5px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--tinta);opacity:0;text-shadow:0 0 4px var(--papel),0 0 2px var(--papel),0 0 1px var(--papel);will-change:transform,opacity}
+@media(min-width:900px){.numeros span{font-size:13px}}
 .flutua{transition:opacity .5s var(--ease),transform .5s var(--ease)}
 .na-jornada .flutua{opacity:0;transform:translateY(16px);pointer-events:none}
 .clareia{position:absolute;inset:0;z-index:5;pointer-events:none;background:var(--marfim);opacity:0}
+
+/* dicas de interação: dizem o que fazer, no celular e no computador */
+.chama-toque{display:flex;align-items:center;gap:10px;justify-self:start;margin-bottom:6px;padding:9px 16px 9px 12px;border-radius:999px;background:var(--marfim);border:1px solid var(--linha);font-size:14px;font-weight:500;color:var(--tinta);transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.chama-toque svg{width:22px;height:22px;flex:none;color:var(--ouro-escuro);animation:cutuca 1.8s var(--ease) infinite}
+.chama-toque.feito{opacity:.0;transform:translateY(-6px);pointer-events:none}
+@keyframes cutuca{0%,100%{transform:translateY(0)}40%{transform:translateY(3px) scale(.92)}60%{transform:translateY(0)}}
+.dente.chama::before{content:"";position:absolute;left:50%;top:50%;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;border:2px solid var(--ouro);animation:chamaDente 1.8s var(--ease-out) infinite;pointer-events:none}
+@keyframes chamaDente{from{transform:scale(.5);opacity:.9}to{transform:scale(1.5);opacity:0}}
+.link-fino.desce svg{animation:desceSeta 1.6s var(--ease) infinite}
+@keyframes desceSeta{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+@media(prefers-reduced-motion:reduce){.chama-toque svg,.dente.chama::before,.link-fino.desce svg{animation:none}}
 
 /* ===== conteúdo claro ===== */
 section.bloco{padding:120px 0 0}
@@ -295,46 +330,64 @@ footer p + p{margin-top:8px}
 .revela.visto{opacity:1;transform:none}
 html:not(.js) .revela{opacity:1;transform:none}
 
-/* arcada interativa */
-.arcada{display:grid;gap:36px;background:var(--papel);border:1px solid var(--linha);border-radius:32px;padding:32px 20px;box-shadow:var(--sombra)}
-.arcada .cabeca{margin-bottom:24px}
+/* arcada interativa: os 32 dentes desenhados com as raízes, no traço da prancha */
+.arcada{display:grid;gap:32px;background:var(--papel);border:1px solid var(--linha);border-radius:32px;padding:32px 18px;box-shadow:var(--sombra)}
+.arcada .cabeca{margin-bottom:0}
 .arcada .cabeca h2{font-size:clamp(36px,4.4vw,58px)}
 .painel{min-height:178px;border-radius:20px;background:var(--marfim);padding:22px 24px;transition:background .45s var(--ease),color .45s}
 .painel .num{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--ouro-escuro)}
-.painel h3{font-size:30px;margin:6px 0 8px}
+.painel h3{font-size:30px;margin:6px 0 10px}
 .painel p{font-size:15.5px;color:var(--cinza)}
+.painel p + p{margin-top:8px}
+.painel p b{color:var(--tinta);font-weight:600}
+.painel .raizes{display:inline-flex;align-items:flex-end;gap:8px;margin-bottom:12px;font-size:14px;font-weight:600;color:var(--tinta)}
+.painel .raizes i{display:inline-flex;gap:3px}
+.painel .raizes em{display:block;width:6px;height:16px;border-radius:2px 2px 6px 6px / 2px 2px 10px 10px;background:#D9BF8A}
+.painel .perto{display:flex;gap:10px;align-items:baseline}
+.painel .perto::before{content:"";flex:none;width:10px;height:10px;border-radius:50%;background:var(--cor,#E2AE16);transform:translateY(1px)}
 .painel.troca > *{animation:painelEntra .45s var(--ease-out) both}
-.painel.troca > :nth-child(2){animation-delay:.04s}.painel.troca > :nth-child(3){animation-delay:.08s}
+.painel.troca > :nth-child(2){animation-delay:.04s}.painel.troca > :nth-child(3){animation-delay:.08s}.painel.troca > :nth-child(4){animation-delay:.12s}
 @keyframes painelEntra{from{opacity:0;transform:translateY(8px)}}
 .painel.siso{background:var(--noite);color:var(--luz)}
-.painel.siso p{color:var(--luz-2)}
+.painel.siso p,.painel.siso .raizes{color:var(--luz-2)}
+.painel.siso p b{color:var(--luz)}
 .painel.siso .num{color:var(--ouro)}
-.painel a{display:inline-block;margin-top:14px;padding:4px 0;font-weight:600;font-size:15px;color:var(--ouro-escuro);text-decoration:none;border-bottom:1.5px solid currentColor}
+.painel .acoes-painel{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:14px}
+.painel a{display:inline-block;padding:4px 0;font-weight:600;font-size:15px;color:var(--ouro-escuro);text-decoration:none;border-bottom:1.5px solid currentColor}
 .painel.siso a{color:var(--ouro)}
-.boca-moldura{display:grid;gap:14px;align-content:center}
-.boca{display:grid;gap:14px}
-.fileira{display:grid;grid-template-columns:repeat(16,1fr);gap:5px;font-variant-numeric:tabular-nums}
-.dente{position:relative;display:flex;align-items:center;justify-content:center;aspect-ratio:3/4;min-height:44px;font-size:clamp(11px,1.3vw,15px);font-weight:600;color:#8a8f99;background:var(--marfim);border:1px solid var(--linha);border-radius:42% 42% 48% 48%/34% 34% 62% 62%;transition:transform .3s var(--ease),background .3s,color .3s,border-color .3s,box-shadow .3s;opacity:0;transform:translateY(-10px)}
-.inferior .dente{border-radius:48% 48% 42% 42%/62% 62% 34% 34%;transform:translateY(10px)}
+.boca-moldura{display:grid;gap:10px;align-content:center}
+.boca{display:grid;gap:4px}
+.fileira{display:grid;grid-template-columns:repeat(16,1fr);gap:2px;align-items:end;font-variant-numeric:tabular-nums}
+.fileira.inferior{align-items:start}
+.dente{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;min-height:44px;padding:4px 0;font-size:clamp(11px,1.2vw,14px);font-weight:600;color:var(--cinza);border-radius:12px;transition:transform .3s var(--ease),color .3s,background .3s;opacity:0;transform:translateY(-10px)}
+.inferior .dente{flex-direction:column-reverse;transform:translateY(10px)}
+.dente svg{display:block;width:100%;height:clamp(64px,8.4vw,112px);overflow:visible}
+.dente .c{fill:#FBF8F2;stroke:var(--tinta);stroke-width:1.2;stroke-linejoin:round;transition:fill .3s}
+.dente .r{fill:#E9D8B4;stroke:var(--tinta);stroke-width:1;stroke-linejoin:round;transition:fill .3s}
+.dente .r.tras{fill:#DCC69A;stroke-opacity:.55}
+.dente .g{fill:none;stroke:#C98C86;stroke-width:1.4;stroke-linecap:round;opacity:.75}
 .arcada.visto .dente{opacity:1;transform:none;transition-delay:calc(var(--i) * 22ms)}
-.dente.meio{margin-right:8px}
-.dente:hover,.dente:focus-visible{transform:translateY(-4px) !important;border-color:var(--tinta);color:var(--tinta);transition-delay:0s !important}
+.dente.meio{margin-right:6px}
+.dente:hover,.dente:focus-visible{transform:translateY(-4px) !important;color:var(--tinta);transition-delay:0s !important}
 .inferior .dente:hover,.inferior .dente:focus-visible{transform:translateY(4px) !important}
-.dente.siso{background:var(--noite);border-color:var(--noite);color:var(--ouro-claro)}
-.dente.siso::after{content:"";position:absolute;inset:-5px;border-radius:inherit;border:1.5px dashed var(--ouro);opacity:.7;animation:giraSiso 9s linear infinite}
-@keyframes giraSiso{to{transform:rotate(360deg)}}
-.dente[aria-pressed="true"]{box-shadow:0 0 0 3px var(--ouro);border-color:var(--ouro)}
-.dica{display:flex;justify-content:space-between;gap:12px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--cinza)}
+.dente.siso{color:var(--ouro-escuro)}
+.dente.siso .c{fill:#F3E6C8}
+.dente[aria-pressed="true"]{color:var(--tinta);background:rgba(200,164,106,.14)}
+.dente[aria-pressed="true"] .c{fill:var(--ouro-claro)}
+.dente[aria-pressed="true"] .r{fill:#D7B577}
+.dica{display:flex;justify-content:space-between;gap:12px;font-size:12px;color:var(--cinza);padding:0 4px}
 .dica span:nth-child(2){text-align:center}
 .dica span:last-child{text-align:right}
 @media(max-width:599px){
-  .boca{gap:22px}
-  .fileira{grid-template-columns:repeat(8,1fr);gap:7px}
-  .dente{font-size:14px}
+  .boca{gap:14px}
+  .fileira{grid-template-columns:repeat(8,1fr);gap:4px 2px}
+  .fileira.inferior{margin-top:6px}
+  .dente{font-size:13px}
+  .dente svg{height:92px}
   .dente.meio{margin-right:0}
   .dica span:nth-child(2){display:none}
 }
-@media(min-width:960px){.arcada{grid-template-columns:1fr 400px;align-items:end;padding:56px;gap:44px 56px}.arcada-texto{grid-column:1;grid-row:1}.painel{grid-column:2;grid-row:1;min-height:220px}.boca-moldura{grid-column:1 / -1;grid-row:2}.arcada .cabeca{margin-bottom:0}.fileira{gap:8px}.dente{font-size:17px}.dente.meio{margin-right:14px}.boca{gap:18px}}
+@media(min-width:960px){.arcada{grid-template-columns:1fr 420px;align-items:center;padding:56px;gap:40px 56px}.arcada-texto{grid-column:1;grid-row:1}.painel{grid-column:2;grid-row:1;min-height:250px}.boca-moldura{grid-column:1 / -1;grid-row:2}.fileira{gap:4px}.dente.meio{margin-right:12px}.boca{gap:6px}}
 
 /* você sabia: cartões que viram */
 .fatos{display:grid;gap:14px}
@@ -413,7 +466,7 @@ html:not(.js) .revela{opacity:1;transform:none}
       <span><b>RUSSO</b><small>Centro Odontológico</small></span>
     </a>
     <nav aria-label="Seções">
-      <a href="#jornada">A cirurgia</a>
+      <a href="#jornada">Por dentro</a>
       <a href="#arcada">Os dentes</a>
       <a href="#sobre">Sobre</a>
       <a href="#tratamentos">Tratamentos</a>
@@ -425,83 +478,64 @@ html:not(.js) .revela{opacity:1;transform:none}
 
 <main id="conteudo">
 
-<section class="jornada" id="jornada" style="--n:8" aria-label="O caminho da cirurgia de siso">
+<section class="jornada" id="jornada" style="--n:4" aria-label="O que existe por trás de um dente">
   <div class="palco">
     <canvas class="raio" id="cena3d" aria-hidden="true"></canvas>
+    <div class="moldura" aria-hidden="true"></div>
+    <div class="numeros" id="numeros" aria-hidden="true"></div>
     <div class="etiquetas" aria-hidden="true">
-      <span class="etq" data-etq="capuz"><i></i><b>Capuz gengival</b></span>
-      <span class="etq" data-etq="canal"><i></i><b>Canal mandibular</b></span>
-      <span class="etq" data-etq="polpa"><i></i><b>Polpa · corte 3D</b></span>
-      <span class="etq" data-etq="alveolo"><i></i><b>Alvéolo cicatrizando</b></span>
+      <span class="etq" data-etq="frontal"><i></i><b>Frontal</b></span>
+      <span class="etq" data-etq="zigomatico"><i></i><b>Zigomático</b></span>
+      <span class="etq" data-etq="maxila"><i></i><b>Maxila</b></span>
+      <span class="etq" data-etq="mandibula"><i></i><b>Mandíbula</b></span>
+      <span class="etq raizes" data-etq="r1"><i></i><b>21</b><small>1 raiz</small></span>
+      <span class="etq raizes" data-etq="r3"><i></i><b>26</b><small>3 raízes</small></span>
+      <span class="etq raizes" data-etq="r2"><i></i><b>36</b><small>2 raízes</small></span>
+      <span class="etq nervo" data-etq="nervo"><i></i><b>Nervo alveolar inferior</b></span>
+      <span class="etq seio" data-etq="seio"><i></i><b>Seio maxilar</b></span>
     </div>
     <div class="vinheta"></div>
 
     <div class="capitulos">
-      <article class="cap ativo" data-cap="0">
-        <p class="rotulo">Dr. Assis Russo · Asa Sul, Brasília</p>
-        <h1>Cirurgia de siso em Brasília, <em>cada passo explicado.</em></h1>
-        <p>Role a página e veja o caminho que o seu siso faz comigo: da primeira radiografia ao último retorno.</p>
+      <article class="cap ativo" data-cap="0" data-legenda="Crânio, vista anterior">
+        <h1>Cirurgia na boca é <em>cirurgia no osso.</em></h1>
+        <p>Sou o Dr. Assis Russo, cirurgião-dentista e residente em cirurgia bucomaxilofacial, na Asa Sul. Role a página e veja o que existe por trás de um dente.</p>
         <div class="acoes">
-          <a class="botao" href="https://wa.me/556131992265?text=Ol%C3%A1%2C%20Dr.%20Assis!%20Quero%20avaliar%20meus%20sisos.">
+          <a class="botao" href="https://wa.me/556131992265?text=Ol%C3%A1%2C%20Dr.%20Assis!%20Quero%20agendar%20uma%20avalia%C3%A7%C3%A3o.">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3a.5.5 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .2-1.2c-.1-.1-.3-.2-.5-.3Z"/></svg>
-            Avaliar meus sisos
+            Agendar avaliação
           </a>
-          <a class="link-fino" href="#jornada" data-ir="1">Ver o caminho <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+          <a class="link-fino desce" href="#jornada" data-ir="1">Role para ver por dentro <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
         </div>
       </article>
-      <article class="cap" data-cap="1">
-        <p class="rotulo">01 · Os quatro do fundo</p>
-        <h2>18, 28, 38 <em>e 48.</em></h2>
-        <p>São os sisos, os últimos dentes de cada lado. Muitas vezes nascem <b>sem espaço, tortos ou presos no osso</b>, e é aí que começam a incomodar.</p>
+      <article class="cap" data-cap="1" data-legenda="Arcadas dentárias, osso transparente">
+        <h2>Por dentro do osso, <em>32 dentes.</em></h2>
+        <p>Com o osso transparente dá para ver o dente inteiro: a <b>coroa</b>, que aparece na boca, e a <b>raiz</b>, presa no osso. Em quase todo dente, a raiz é maior que a coroa.</p>
       </article>
-      <article class="cap" data-cap="2">
-        <p class="rotulo">02 · O que dói</p>
-        <h2>Quando a gengiva <em>vira um capuz.</em></h2>
-        <p>A gengiva cobre parte do siso, acumula comida e inflama. É a <b>pericoronarite</b>: dói, incha e pode infeccionar. Junto com o siso cariado, que é difícil de limpar, é o motivo mais comum de quem chega até mim.</p>
+      <article class="cap" data-cap="2" data-legenda="Numeração dos dentes e raízes">
+        <h2>Cada dente tem um número <em>e suas raízes.</em></h2>
+        <p>O dentista chama cada dente por um número, do 11 ao 48. E cada um tem de uma a três raízes: o incisivo tem <b>uma</b>, o molar de baixo tem <b>duas</b> e o molar de cima tem <b>três</b>.</p>
       </article>
-      <article class="cap" data-cap="3">
-        <p class="rotulo">03 · O que a radiografia mostra</p>
-        <h2>O nervo passa <em>logo abaixo.</em></h2>
-        <p>Na panorâmica eu vejo a posição de cada siso e a distância até o <b>canal mandibular</b>, onde passa o nervo que dá sensibilidade ao lábio e ao queixo. Também procuro lesões dentro do osso.</p>
-      </article>
-      <article class="cap" data-cap="4">
-        <p class="rotulo">04 · Tomografia, quando precisa</p>
-        <h2>O plano em <em>três dimensões.</em></h2>
-        <p>Se o siso nunca nasceu ou está perto do nervo, peço a <b>tomografia</b>. Ela mostra os espaços em 3D e deixa a cirurgia previsível antes de ela começar.</p>
-      </article>
-      <article class="cap" data-cap="5">
-        <p class="rotulo">05 · A decisão, com você</p>
-        <h2>Consultório ou <em>centro cirúrgico.</em></h2>
-        <p>Quem decide o caminho é um profissional preparado, junto com você.</p>
-        <ul>
-          <li><i>a</i><span><b>No consultório</b>A maioria dos casos, com anestesia local.</span></li>
-          <li><i>b</i><span><b>No centro cirúrgico</b>Quando o caso pede sedação ou é de maior complexidade.</span></li>
+      <article class="cap" data-cap="3" data-legenda="Nervo alveolar inferior e seio maxilar">
+        <h2>Por isso não é <em>só arrancar o dente.</em></h2>
+        <p>Bem perto das raízes passam estruturas que pedem cuidado. Antes de operar, eu vejo na radiografia e, quando precisa, na tomografia, onde cada uma está.</p>
+        <ul class="marcadores">
+          <li><i style="background:#E2AE16"></i><span><b>Nervo alveolar inferior</b>, embaixo dos dentes de baixo. Dá a sensibilidade do lábio e do queixo.</span></li>
+          <li><i style="background:#4F8FCB"></i><span><b>Seio maxilar</b>, em cima dos dentes de cima. Uma cavidade de ar dentro do osso.</span></li>
         </ul>
-      </article>
-      <article class="cap" data-cap="6">
-        <p class="rotulo">06 · A cirurgia</p>
-        <h2>Técnica, calma e <em>nada de surpresa.</em></h2>
-        <p>Antes, uma limpeza de preparo para reduzir o risco de infecção. No dia, o procedimento segue o que foi planejado, e você sai com as orientações por escrito.</p>
-      </article>
-      <article class="cap" data-cap="7">
-        <p class="rotulo">07 · Dois retornos</p>
-        <h2>Eu acompanho <em>até fechar.</em></h2>
-        <p>No primeiro retorno eu tiro os pontos. No segundo avalio a cicatrização. Só aí o caso termina.</p>
         <div class="acoes">
-          <a class="botao" href="https://wa.me/556131992265?text=Ol%C3%A1%2C%20Dr.%20Assis!%20Quero%20avaliar%20meus%20sisos.">Marcar minha avaliação <svg class="seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="botao" href="#arcada">Explore cada dente <svg class="seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+          <a class="link-fino" href="https://wa.me/556131992265?text=Ol%C3%A1%2C%20Dr.%20Assis!%20Quero%20agendar%20uma%20avalia%C3%A7%C3%A3o.">Agendar avaliação</a>
         </div>
       </article>
     </div>
 
-    <ol class="trilho" id="trilho" aria-label="Capítulos">
-      <li><button data-ir="0"><span>Início</span><i></i></button></li>
-      <li><button data-ir="1"><span>Os sisos</span><i></i></button></li>
-      <li><button data-ir="2"><span>O que dói</span><i></i></button></li>
-      <li><button data-ir="3"><span>O nervo</span><i></i></button></li>
-      <li><button data-ir="4"><span>Tomografia</span><i></i></button></li>
-      <li><button data-ir="5"><span>A decisão</span><i></i></button></li>
-      <li><button data-ir="6"><span>A cirurgia</span><i></i></button></li>
-      <li><button data-ir="7"><span>Os retornos</span><i></i></button></li>
+    <p class="legenda" id="legenda" aria-hidden="true"><b>I</b><span>Crânio, vista anterior</span></p>
+    <ol class="trilho" id="trilho" aria-label="Pranchas">
+      <li><button data-ir="0"><span>Crânio</span><b>I</b></button></li>
+      <li><button data-ir="1"><span>Os dentes</span><b>II</b></button></li>
+      <li><button data-ir="2"><span>Os números</span><b>III</b></button></li>
+      <li><button data-ir="3"><span>Nervo e seio</span><b>IV</b></button></li>
     </ol>
     <div class="rolar" id="rolar" aria-hidden="true">Role<i></i></div>
     <div class="progresso" id="progresso"></div>
@@ -522,20 +556,16 @@ html:not(.js) .revela{opacity:1;transform:none}
         <div class="arcada-texto">
           <div class="cabeca">
             <p class="rotulo">Os 32 dentes</p>
-            <h2>Cada dente <em>tem um número.</em></h2>
-            <p class="sub">É assim que ele aparece no prontuário e na radiografia. Os sisos são o 18, o 28, o 38 e o 48. Passe o mouse ou toque em qualquer dente.</p>
+            <h2>Cada dente <em>e as suas raízes.</em></h2>
+            <p class="sub">Cada dente com o número que aparece no prontuário e na radiografia. Os sisos são o 18, o 28, o 38 e o 48.</p>
           </div>
         </div>
         <div class="boca-moldura">
+          <p class="chama-toque" id="chamaDentes"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V10m0-.5V4a1.5 1.5 0 0 1 3 0v6m0-1.5a1.5 1.5 0 0 1 3 0V14a7 7 0 0 1-7 7h-.6a6 6 0 0 1-4.6-2.2L3.4 15a1.6 1.6 0 0 1 2.4-2.1L9 15.5"/></svg><span class="dica-acao" data-toque="Toque num dente para ver as raízes e o que ele pede" data-mouse="Passe o mouse ou clique num dente para ver as raízes e o que ele pede"></span></p>
           <div class="boca" id="boca" role="group" aria-label="Arcada dentária: 32 dentes numerados"></div>
           <p class="dica"><span>Direita do paciente</span><span>Em cima, os dentes de cima</span><span>Esquerda do paciente</span></p>
         </div>
-        <div class="painel siso" id="painel" aria-live="polite">
-          <span class="num">Dente 18</span>
-          <h3>Siso superior direito</h3>
-          <p>Quando nasce torto, preso no osso ou sem espaço, causa dor, inflamação e empurra os vizinhos. A radiografia mostra se precisa sair.</p>
-          <a href="https://wa.me/556131992265?text=Ol%C3%A1%2C%20Dr.%20Assis!%20Quero%20avaliar%20meus%20sisos.">Avaliar meus sisos</a>
-        </div>
+        <div class="painel" id="painel" aria-live="polite"></div>
       </div>
     </section>
 
@@ -543,23 +573,23 @@ html:not(.js) .revela{opacity:1;transform:none}
       <div class="cabeca revela">
         <p class="rotulo">Você sabia?</p>
         <h2>O que pouca gente <em>sabe sobre o siso.</em></h2>
-        <p class="sub">Toque em cada cartão. Informação de acordo com a literatura de cirurgia bucomaxilofacial.</p>
+        <p class="sub"><span class="dica-acao" data-toque="Toque em cada cartão para virar." data-mouse="Clique em cada cartão para virar."></span> Informação de acordo com a literatura de cirurgia bucomaxilofacial.</p>
       </div>
       <div class="fatos revela">
         <button class="fato" aria-pressed="false">
-          <span class="frente"><i>01</i><b>A exodontia (remoção do dente) de um siso pode levar a uma fratura da mandíbula.</b><small>Toque para entender</small></span>
+          <span class="frente"><i>01</i><b>A exodontia (remoção do dente) de um siso pode levar a uma fratura da mandíbula.</b><small class="dica-acao" data-toque="Toque para entender" data-mouse="Clique para entender"></small></span>
           <span class="verso"><i>01</i><span>Em casos raros. Quando o siso está muito profundo e o osso em volta é fino, a mandíbula fica mais frágil, e a fratura pode acontecer na cirurgia ou semanas depois. Por isso o planejamento e um profissional preparado vêm antes de tudo.</span></span>
         </button>
         <button class="fato" aria-pressed="false">
-          <span class="frente"><i>02</i><b>O siso pode estar encostado no nervo do lábio e do queixo.</b><small>Toque para entender</small></span>
+          <span class="frente"><i>02</i><b>O siso pode estar encostado no nervo do lábio e do queixo.</b><small class="dica-acao" data-toque="Toque para entender" data-mouse="Clique para entender"></small></span>
           <span class="verso"><i>02</i><span>O canal mandibular passa logo abaixo das raízes. Quando os dois estão muito perto, a cirurgia sem planejamento pode deixar o lábio dormente (parestesia). A tomografia mostra essa distância antes.</span></span>
         </button>
         <button class="fato" aria-pressed="false">
-          <span class="frente"><i>03</i><b>Um siso que nunca nasceu pode formar uma lesão dentro do osso.</b><small>Toque para entender</small></span>
+          <span class="frente"><i>03</i><b>Um siso que nunca nasceu pode formar uma lesão dentro do osso.</b><small class="dica-acao" data-toque="Toque para entender" data-mouse="Clique para entender"></small></span>
           <span class="verso"><i>03</i><span>O siso incluso (preso no osso) pode desenvolver cistos na mandíbula, que crescem sem doer. A radiografia encontra o problema cedo, quando a cirurgia é menor.</span></span>
         </button>
         <button class="fato" aria-pressed="false">
-          <span class="frente"><i>04</i><b>O siso pode estragar o dente vizinho.</b><small>Toque para entender</small></span>
+          <span class="frente"><i>04</i><b>O siso pede cuidado com o dente vizinho.</b><small class="dica-acao" data-toque="Toque para entender" data-mouse="Clique para entender"></small></span>
           <span class="verso"><i>04</i><span>Encostado no segundo molar, o siso acumula comida e favorece cárie e perda de osso no vizinho, um dente importante para mastigar. Tirar o siso a tempo protege o dente da frente.</span></span>
         </button>
       </div>
@@ -580,7 +610,7 @@ html:not(.js) .revela{opacity:1;transform:none}
           <p class="sub">Na residência atuo também no trauma de face, com fraturas e reconstrução. Essa bagagem me deixa preparado do siso simples ao caso complexo, e é com ela que decido com você se o procedimento é feito no consultório ou no centro cirúrgico.</p>
           <dl class="formacao">
             <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 9 12 4 2 9l10 5 10-5Z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg><span><dt>Formação</dt><dd>Residente em Cirurgia e Traumatologia Bucomaxilofacial pela ACBDF (em andamento)</dd></span></div>
-            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><circle cx="9" cy="12" r="2.5"/><path d="M14 10h4M14 14h3"/></svg><span><dt>Registro</dt><dd>CRO-DF (número a confirmar)</dd></span></div>
+            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><circle cx="9" cy="12" r="2.5"/><path d="M14 10h4M14 14h3"/></svg><span><dt>Registro</dt><dd>CRO-DF 17577</dd></span></div>
           </dl>
         </div>
       </div>
@@ -656,12 +686,12 @@ html:not(.js) .revela{opacity:1;transform:none}
       <div class="cabeca revela">
         <p class="rotulo">Centro cirúrgico</p>
         <h2>Onde a técnica <em>acontece.</em></h2>
-        <p class="sub">Escovação, paramentação e o centro cirúrgico preparado antes de cada procedimento. Toque numa foto para ampliar.</p>
+        <p class="sub">O centro cirúrgico, preparado antes de cada procedimento. <span class="dica-acao" data-toque="Toque numa foto para ampliar." data-mouse="Clique numa foto para ampliar."></span></p>
       </div>
       <!-- Só fotos em que o Assis aparece (pedido dele: outros profissionais no máximo de costas). Mais fotos entram com as do WhatsApp. -->
       <div class="galeria duas revela" id="galeria">
-        <button><img src="img/centro-cirurgico-1131-m.jpg" srcset="img/centro-cirurgico-1131-m.jpg 1000w, img/centro-cirurgico-1131.jpg 2000w" sizes="(min-width: 860px) 62vw, 100vw" alt="Dr. Assis Russo em procedimento no centro cirúrgico" width="2000" height="1333" loading="lazy"></button>
-        <button><img src="img/escovacao-1107-m.jpg" srcset="img/escovacao-1107-m.jpg 1000w, img/escovacao-1107.jpg 2000w" sizes="(min-width: 860px) 38vw, 100vw" alt="Dr. Assis Russo na escovação das mãos antes da cirurgia" width="2000" height="1333" loading="lazy"></button>
+        <button><img src="img/assis-centro-cirurgico-1540-m.jpg" srcset="img/assis-centro-cirurgico-1540-m.jpg 709w, img/assis-centro-cirurgico-1540.jpg 1185w" sizes="(min-width: 860px) 62vw, 100vw" alt="Dr. Assis Russo de pijama cirúrgico no centro cirúrgico" width="1185" height="1500" loading="lazy" style="object-position:30% 18%"></button>
+        <button><img src="img/assis-centro-cirurgico-1539-m.jpg" srcset="img/assis-centro-cirurgico-1539-m.jpg 691w, img/assis-centro-cirurgico-1539.jpg 1105w" sizes="(min-width: 860px) 38vw, 100vw" alt="Dr. Assis Russo explicando o procedimento no centro cirúrgico" width="1105" height="1440" loading="lazy" style="object-position:40% 18%"></button>
       </div>
     </section>
 
@@ -702,9 +732,9 @@ html:not(.js) .revela{opacity:1;transform:none}
 
 <footer>
   <div class="wrap">
-    <p>Russo Centro Odontológico LTDA. Responsável técnico: Dr. Assis Russo, CRO-DF (número a confirmar).</p>
+    <p>Russo Centro Odontológico LTDA. Responsável técnico: Dr. Assis Russo, CRO-DF 17577.</p>
     <p>Os dados informados no contato (nome e telefone) são usados só para responder o seu pedido, não são compartilhados e podem ser apagados quando você pedir. Contato: WhatsApp (61) 3199-2265.</p>
-    <p>O dente em 3D é uma ilustração explicativa e não representa um caso real.</p>
+    <p>O crânio e os dentes em 3D são ilustrações explicativas e não representam um caso real. Modelo do crânio: BodyParts3D, © The Database Center for Life Science, licença CC BY-SA 2.1 Japão.</p>
   </div>
 </footer>
 
@@ -729,7 +759,9 @@ html:not(.js) .revela{opacity:1;transform:none}
   const limita = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 
   // ===== a jornada: o texto acompanha a rolagem; o 3D fica no módulo do fim da página =====
-  const N = 8;
+  const N = 4;
+  const legendaPrancha = document.getElementById('legenda');
+  const romanos = ['I', 'II', 'III', 'IV'];
   const jornada = document.getElementById('jornada');
   const caps = [...document.querySelectorAll('.cap')];
   const botoesTrilho = [...document.querySelectorAll('#trilho button')];
@@ -743,6 +775,7 @@ html:not(.js) .revela{opacity:1;transform:none}
     if (i !== atual) {
       caps.forEach((c, k) => { c.classList.toggle('ativo', k === i); c.toggleAttribute('inert', k !== i); });
       botoesTrilho.forEach((b, k) => k === i ? b.setAttribute('aria-current', 'step') : b.removeAttribute('aria-current'));
+      if (legendaPrancha) legendaPrancha.innerHTML = '<b>' + romanos[i] + '</b><span>' + caps[i].dataset.legenda + '</span>';
       atual = i;
     }
   };
@@ -761,8 +794,9 @@ html:not(.js) .revela{opacity:1;transform:none}
   const irPara = (i) => {
     const r = jornada.getBoundingClientRect();
     const alvo = scrollY + r.top + (r.height - innerHeight) * ((i + .5) / N);
-    scrollTo({ top: i === 0 ? scrollY + r.top : alvo, behavior: semMovimento ? 'auto' : 'smooth' });
+    scrollTo({ top: i === 0 ? scrollY + r.top : alvo, behavior: semMovimento || /[?&]print/.test(location.search) ? 'instant' : 'smooth' });
   };
+  window.__ir = irPara;
   document.querySelectorAll('[data-ir]').forEach((b) => b.addEventListener('click', (e) => { e.preventDefault(); irPara(+b.dataset.ir); }));
 
   // topo claro depois da jornada; some ao descer e volta ao subir
@@ -853,11 +887,20 @@ html:not(.js) .revela{opacity:1;transform:none}
     setTimeout(() => o.remove(), 700);
   }));
 
-  // arcada: um botão por dente, numeração FDI, explicação de cada um
+  // dicas de interação: "toque" no celular, "clique ou passe o mouse" no computador
+  const comMouse = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  document.querySelectorAll('.dica-acao').forEach((el) => { el.textContent = comMouse ? el.dataset.mouse : el.dataset.toque; });
+
+  // arcada: os 32 dentes desenhados com as raízes (numeração FDI) e o que cada um pede
   const boca = document.getElementById('boca');
   if (boca) {
     const posicao = ['', 'Incisivo central', 'Incisivo lateral', 'Canino', 'Primeiro pré-molar', 'Segundo pré-molar', 'Primeiro molar', 'Segundo molar', 'Siso'];
     const lado = { 1: 'superior direito', 2: 'superior esquerdo', 3: 'inferior esquerdo', 4: 'inferior direito' };
+    // medidas médias em mm: coroa, raiz, largura; e quantas raízes
+    const MEDIDAS = {
+      s: [null, [10.5, 13, 8.5, 1], [9, 13, 6.5, 1], [10, 17, 7.5, 1], [8.5, 14, 7, 2], [8.5, 14, 6.5, 1], [7.5, 12.5, 10, 3], [7, 11.5, 9, 3], [6.5, 10.5, 8.5, 3]],
+      i: [null, [9, 12.5, 5, 1], [9.5, 14, 5.5, 1], [11, 16, 7, 1], [8.5, 14, 7, 1], [8, 14.5, 7, 1], [7.5, 14, 11, 2], [7, 13, 10.5, 2], [7, 11, 10, 2]]
+    };
     const sobre = {
       1: 'Corta os alimentos e é o dente mais visível do sorriso.',
       2: 'Ajuda a cortar e completa o desenho do sorriso, ao lado do central.',
@@ -866,42 +909,110 @@ html:not(.js) .revela{opacity:1;transform:none}
       5: 'Faz a passagem entre o corte da frente e a mastigação pesada do fundo.',
       6: 'O principal dente da mastigação. Nasce por volta dos 6 anos e é permanente: cuidar dele é cuidar da mordida inteira.',
       7: 'Mastigação pesada. É o vizinho do siso, e o que mais sofre quando o siso nasce encostado nele.',
-      8: 'Quando nasce torto, preso no osso ou sem espaço, causa dor, inflamação e empurra os vizinhos. A radiografia mostra se precisa sair.'
+      8: 'O último de cada lado. Muitas vezes não encontra espaço para nascer.'
     };
+    const pode = {
+      1: 'Uma batida ou queda pode quebrar ou deslocar o dente. Procure atendimento logo.',
+      2: 'Uma batida ou queda pode quebrar ou deslocar o dente. Procure atendimento logo.',
+      3: 'Às vezes fica preso no osso e não nasce. Na cirurgia dá para expor o dente, para o ortodontista trazer ele para o lugar.',
+      4: 'Pode precisar sair para abrir espaço no aparelho, a pedido do ortodontista.',
+      5: 'Pode precisar sair para abrir espaço no aparelho, a pedido do ortodontista.',
+      6: 'Cárie funda e infecção podem formar um abscesso. Quando não dá para salvar, a extração é planejada pela posição das raízes.',
+      7: 'Cárie funda e infecção podem formar um abscesso. Quando o siso nasce encostado, ele também pede cuidado.',
+      8: 'Pode nascer torto, ficar preso no osso ou inflamar a gengiva por cima (pericoronarite). Quando nunca nasce, pode formar uma lesão dentro do osso, como um cisto.'
+    };
+    const quemTrata = { 1: 'Urgência', 2: 'Urgência', 3: 'Cirurgia de dente incluso', 4: 'Extrações', 5: 'Extrações', 6: 'Extrações e urgência', 7: 'Extrações e urgência', 8: 'Cirurgia de siso' };
+    const perto = (sup, p) => {
+      if (sup && p >= 4) return ['#4F8FCB', 'As raízes ficam perto do <b>seio maxilar</b>, a cavidade de ar acima dos dentes de cima.'];
+      if (!sup && p >= 6) return ['#E2AE16', 'As raízes ficam perto do <b>nervo alveolar inferior</b>, que dá a sensibilidade do lábio e do queixo.'];
+      if (!sup && p >= 4) return ['#E2AE16', 'Perto das raízes sai o <b>nervo do queixo</b> (forame mentual).'];
+      return null;
+    };
+
+    // desenho de atlas: coroa embaixo, raízes em cima (o de baixo é espelhado)
+    const desenha = (sup, p) => {
+      const [coroa, raiz, larg, nr] = MEDIDAS[sup ? 's' : 'i'][p];
+      const k = 2.9, cx = 20, cw = Math.min(38, larg * 3.7), ch = coroa * k, rl = raiz * k, base = 98, colo = base - ch, nw = cw * .74;
+      const pontas = p <= 2 ? 0 : p === 3 ? 1 : p <= 5 ? 2 : 3;
+      let borda;
+      if (pontas === 0) borda = `L${cx + cw * .46},${base - 1.5} Q${cx},${base + 1.2} ${cx - cw * .46},${base - 1.5}`;
+      else if (pontas === 1) borda = `L${cx + cw * .44},${base - ch * .22} L${cx},${base + 1.5} L${cx - cw * .44},${base - ch * .22}`;
+      else {
+        borda = `L${cx + cw * .46},${base - 2.2} `;
+        for (let j = 0; j < pontas; j++) {
+          const x0 = cx + cw * .46 - (cw * .92) * (j / pontas), x1 = cx + cw * .46 - (cw * .92) * ((j + 1) / pontas);
+          borda += `Q${(x0 + x1) / 2},${base + 2.5} ${x1},${base - 2.2} `;
+        }
+      }
+      const coroaP = `M${cx - nw / 2},${colo} L${cx + nw / 2},${colo} C${cx + cw * .5},${colo + ch * .18} ${cx + cw * .52},${colo + ch * .55} ${cx + cw * .46},${base - 2} ${borda} C${cx - cw * .52},${colo + ch * .55} ${cx - cw * .5},${colo + ch * .18} ${cx - nw / 2},${colo} Z`;
+      const umaRaiz = (x, w, L, desvio, cls) => `<path class="${cls}" d="M${x - w / 2},${colo + 1} Q${x - w * .5},${colo - L * .55} ${x + desvio - .9},${colo - L} Q${x + desvio},${colo - L - 1.6} ${x + desvio + .9},${colo - L} Q${x + w * .5},${colo - L * .55} ${x + w / 2},${colo + 1} Z"/>`;
+      let raizes = '';
+      if (nr === 1) raizes = umaRaiz(cx, nw, rl, 0, 'r');
+      else if (nr === 2) raizes = umaRaiz(cx - nw * .26, nw * .46, rl, -2.5, 'r') + umaRaiz(cx + nw * .26, nw * .46, rl * .96, 2.5, 'r');
+      else raizes = umaRaiz(cx, nw * .42, rl * .9, 0, 'r tras') + umaRaiz(cx - nw * .28, nw * .4, rl, -3, 'r') + umaRaiz(cx + nw * .28, nw * .4, rl * .94, 3, 'r');
+      const gengiva = `<path class="g" d="M${cx - cw * .5},${colo + 4} Q${cx},${colo - 2} ${cx + cw * .5},${colo + 4}"/>`;
+      const espelho = sup ? '' : ' transform="translate(0 100) scale(1 -1)"';
+      return `<svg viewBox="0 0 40 100" aria-hidden="true"><g${espelho}>${raizes}<path class="c" d="${coroaP}"/>${gengiva}</g></svg>`;
+    };
+
     const painel = document.getElementById('painel');
-    const linkSiso = painel.querySelector('a').outerHTML;
+    const linkSiso = '<a href="https://wa.me/556131992265?text=Ol%C3%A1%2C%20Dr.%20Assis!%20Quero%20avaliar%20meus%20sisos.">Avaliar meus sisos</a>';
     const linkAval = '<a href="https://wa.me/556131992265?text=Ol%C3%A1%2C%20Dr.%20Assis!%20Quero%20agendar%20uma%20avalia%C3%A7%C3%A3o.">Agendar uma avaliação</a>';
     let ativo = null;
     const mostra = (n, botao) => {
       if (botao === ativo) return;
-      const q = Math.floor(n / 10), p = n % 10, siso = p === 8;
+      const q = Math.floor(n / 10), p = n % 10, sup = q <= 2, siso = p === 8;
+      const nr = MEDIDAS[sup ? 's' : 'i'][p][3];
+      const pr = perto(sup, p);
       painel.classList.toggle('siso', siso);
-      painel.innerHTML = '<span class="num">Dente ' + n + ' · ' + (q <= 2 ? 'arcada de cima' : 'arcada de baixo') + '</span><h3>' + posicao[p] + ' ' + lado[q] + '</h3><p>' + sobre[p] + '</p>' + (siso ? linkSiso : linkAval);
+      painel.innerHTML = '<span class="num">Dente ' + n + ' · ' + (sup ? 'arcada de cima' : 'arcada de baixo') + '</span>'
+        + '<h3>' + posicao[p] + ' ' + lado[q] + '</h3>'
+        + '<span class="raizes"><i>' + '<em></em>'.repeat(nr) + '</i>' + nr + (nr === 1 ? ' raiz' : ' raízes') + '</span>'
+        + '<p>' + sobre[p] + '</p>'
+        + '<p><b>O que pode acontecer.</b> ' + pode[p] + '</p>'
+        + (pr ? '<p class="perto" style="--cor:' + pr[0] + '"><span>' + pr[1] + '</span></p>' : '')
+        + '<div class="acoes-painel"><a href="#tratamentos">' + quemTrata[p] + '</a>' + (siso ? linkSiso : linkAval) + '</div>';
       painel.classList.remove('troca'); void painel.offsetWidth; painel.classList.add('troca');
       if (ativo) ativo.setAttribute('aria-pressed', 'false');
       ativo = botao; botao.setAttribute('aria-pressed', 'true');
     };
     const cima = [18, 17, 16, 15, 14, 13, 12, 11, 21, 22, 23, 24, 25, 26, 27, 28];
     const baixo = [48, 47, 46, 45, 44, 43, 42, 41, 31, 32, 33, 34, 35, 36, 37, 38];
-    let k = 0;
+    let k = 0, primeiro = null;
     [cima, baixo].forEach((fila, i) => {
       const linha = document.createElement('div');
       linha.className = 'fileira' + (i ? ' inferior' : '');
       fila.forEach((n) => {
         const b = document.createElement('button');
-        b.className = 'dente' + (n % 10 === 8 ? ' siso' : '') + (n === 11 || n === 41 ? ' meio' : '');
-        b.textContent = n;
+        const p = n % 10, sup = n < 30;
+        b.className = 'dente' + (p === 8 ? ' siso' : '') + (n === 11 || n === 41 ? ' meio' : '');
+        b.innerHTML = desenha(sup, p) + '<span>' + n + '</span>';
         b.style.setProperty('--i', k++);
-        b.setAttribute('aria-pressed', n === 18 ? 'true' : 'false');
-        b.setAttribute('aria-label', 'Dente ' + n + ', ' + posicao[n % 10] + ' ' + lado[Math.floor(n / 10)]);
-        b.addEventListener('click', () => mostra(n, b));
+        b.setAttribute('aria-pressed', 'false');
+        b.setAttribute('aria-label', 'Dente ' + n + ', ' + posicao[p] + ' ' + lado[Math.floor(n / 10)]);
+        b.addEventListener('click', () => {
+          mostra(n, b);
+          // no celular o painel fica abaixo dos dentes: desce até ele para a resposta aparecer
+          if (!comMouse) {
+            const r = painel.getBoundingClientRect();
+            if (r.top > innerHeight * .7 || r.bottom < 90) painel.scrollIntoView({ behavior: semMovimento ? 'auto' : 'smooth', block: 'center' });
+          }
+        });
         b.addEventListener('mouseenter', () => { if (matchMedia('(hover: hover)').matches) mostra(n, b); });
         b.addEventListener('focus', () => mostra(n, b));
-        if (n === 18) ativo = b;
+        if (n === 38) primeiro = b;
         linha.appendChild(b);
       });
       boca.appendChild(linha);
     });
+    if (primeiro) mostra(38, primeiro);
+    const chama = document.getElementById('chamaDentes');
+    const chamado = boca.querySelector('.dente.siso');
+    if (chamado) chamado.classList.add('chama');
+    const usou = () => { if (chama) chama.classList.add('feito'); boca.querySelectorAll('.chama').forEach((d) => d.classList.remove('chama')); };
+    boca.addEventListener('pointerdown', usou, { once: true });
+    boca.addEventListener('keydown', usou, { once: true });
+    if (comMouse) boca.addEventListener('mouseover', usou, { once: true });
   }
 
   // você sabia: vira o cartão
@@ -974,236 +1085,376 @@ html:not(.js) .revela{opacity:1;transform:none}
 import * as THREE from 'three';
 import { MarchingCubes } from 'three/addons/objects/MarchingCubes.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
-import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
 
-// ===== o siso em 3D: um bloco de osso translúcido, o dente, o nervo e a rolagem contando a cirurgia =====
+// Os 32 dentes com raízes, o nervo alveolar inferior e o seio maxilar, em mm,
+// no mesmo sistema do cranio.bin (x = esquerda do paciente, y = cima, z = frente).
+// Cada tipo de dente é um campo de esferas que se fundem (MarchingCubes) e vira geometria fixa.
+
+// medidas médias (mm): coroa, raiz, largura (mesial-distal), espessura (vestíbulo-lingual), raízes
+const TIPOS = {
+  s1: { nome: 'Incisivo central superior', coroa: 10.5, raiz: 13, w: 8.5, d: 7, forma: 'inc', raizes: 1 },
+  s2: { nome: 'Incisivo lateral superior', coroa: 9, raiz: 13, w: 6.5, d: 6, forma: 'inc', raizes: 1 },
+  s3: { nome: 'Canino superior', coroa: 10, raiz: 17, w: 7.5, d: 8, forma: 'can', raizes: 1 },
+  s4: { nome: 'Primeiro pré-molar superior', coroa: 8.5, raiz: 14, w: 7, d: 9, forma: 'pm', raizes: 2 },
+  s5: { nome: 'Segundo pré-molar superior', coroa: 8.5, raiz: 14, w: 6.5, d: 9, forma: 'pm', raizes: 1 },
+  s6: { nome: 'Primeiro molar superior', coroa: 7.5, raiz: 12.5, w: 10, d: 11, forma: 'mol', raizes: 3 },
+  s7: { nome: 'Segundo molar superior', coroa: 7, raiz: 11.5, w: 9, d: 11, forma: 'mol', raizes: 3 },
+  s8: { nome: 'Siso superior', coroa: 6.5, raiz: 10.5, w: 8.5, d: 10, forma: 'mol', raizes: 3 },
+  i1: { nome: 'Incisivo central inferior', coroa: 9, raiz: 12.5, w: 5, d: 6, forma: 'inc', raizes: 1 },
+  i2: { nome: 'Incisivo lateral inferior', coroa: 9.5, raiz: 14, w: 5.5, d: 6.5, forma: 'inc', raizes: 1 },
+  i3: { nome: 'Canino inferior', coroa: 11, raiz: 16, w: 7, d: 7.5, forma: 'can', raizes: 1 },
+  i4: { nome: 'Primeiro pré-molar inferior', coroa: 8.5, raiz: 14, w: 7, d: 7.5, forma: 'pm', raizes: 1 },
+  i5: { nome: 'Segundo pré-molar inferior', coroa: 8, raiz: 14.5, w: 7, d: 8, forma: 'pm', raizes: 1 },
+  i6: { nome: 'Primeiro molar inferior', coroa: 7.5, raiz: 14, w: 11, d: 10.5, forma: 'mol', raizes: 2 },
+  i7: { nome: 'Segundo molar inferior', coroa: 7, raiz: 13, w: 10.5, d: 10, forma: 'mol', raizes: 2 },
+  i8: { nome: 'Siso inferior', coroa: 7, raiz: 11, w: 10, d: 9.5, forma: 'mol', raizes: 2 },
+};
+
+// arco (lado direito do paciente, x <= 0), do meio pra trás: [x, z]
+const ARCO_SUP = [[0, 38.5], [-8.5, 36.8], [-16, 31.5], [-22, 24.2], [-26.5, 15.8], [-29.5, 6.5], [-31.5, -3.3], [-32.5, -13]];
+const ARCO_INF = [[0, 32.5], [-7.5, 31], [-14.5, 26.3], [-20.5, 19.6], [-25, 11.2], [-29, 1.8], [-32, -8], [-34, -18]];
+
+function montarBoca(THREE, MarchingCubes, { res = 40 } = {}) {
+  const geoTipo = {};
+  const geometria = (id) => {
+    if (geoTipo[id]) return geoTipo[id];
+    const t = TIPOS[id];
+    const lado = Math.max(t.coroa + t.raiz, t.w, t.d) + 5;
+    const mc = new MarchingCubes(res, new THREE.MeshBasicMaterial(), false, false, 60000);
+    mc.isolation = 80;
+    mc.reset();
+    const meio = (t.raiz - t.coroa) / 2;
+    // bola em mm (x largura, y altura com raiz pra cima, z espessura); r = raio aproximado
+    const bola = (x, y, z, r) => mc.addBall(.5 + x / lado, .5 + (y - meio) / lado, .5 + z / lado, 92 * (r / lado) ** 2 * .62, 12);
+    const { w, d, coroa: c } = t;
+    if (t.forma === 'inc') {
+      for (let i = 0; i <= 5; i++) {
+        const f = i / 5, y = -c * (1 - f * .92), esp = d * (.18 + .3 * f);
+        for (const x of [-.32, 0, .32]) bola(x * w * (1 - .15 * f), y, 0, Math.max(esp, w * .22));
+      }
+    } else if (t.forma === 'can') {
+      for (let i = 0; i <= 6; i++) {
+        const f = i / 6, y = -c * (1 - f * .95), r = (w * .22 + d * .2 * f) * (.55 + .45 * Math.sqrt(f));
+        for (const x of [-.2, .2]) bola(x * w * f, y, 0, r);
+      }
+    } else if (t.forma === 'pm') {
+      for (const z of [-.24, .24]) bola(0, -c + d * .26, z * d, d * .27);
+      for (let i = 1; i <= 4; i++) { const f = i / 4; for (const x of [-.25, .25]) bola(x * w, -c * (1 - f * .9), 0, d * (.3 + .06 * f)); }
+    } else {
+      for (const x of [-.25, .25]) for (const z of [-.25, .25]) bola(x * w, -c + w * .2, z * d, w * .23);
+      for (let i = 1; i <= 4; i++) { const f = i / 4; for (const x of [-.24, .24]) for (const z of [-.2, .2]) bola(x * w, -c * (1 - f * .9), z * d, w * (.25 - .02 * f)); }
+    }
+    // colo do dente
+    bola(0, -.3, 0, Math.min(w, d) * .36);
+    // raízes: ponto de saída (x, z), curva pra distal e afinando até o ápice
+    const raizes = t.raizes === 1 ? [[0, 0, 1]]
+      : t.raizes === 2 && t.forma === 'pm' ? [[0, .24, .95], [0, -.24, .9]]
+      : t.raizes === 2 ? [[-.28, 0, 1], [.28, 0, .95]]
+      : [[-.26, .22, .95], [.26, .22, .9], [0, -.28, 1]];
+    const r0 = Math.min(w, d) * (t.raizes === 1 ? .34 : .25);
+    for (const [rx, rz, fl] of raizes) {
+      const L = t.raiz * fl;
+      for (let i = 0; i <= 12; i++) {
+        const f = i / 12;
+        bola(rx * w * (1 + f * .3) + f * f * w * .1, L * f * .97, rz * d * (1 + f * .2), r0 * (1 - f * .55));
+      }
+    }
+    mc.update();
+    const g = new THREE.BufferGeometry();
+    const k = lado / 2;
+    const pos = mc.positionArray.slice(0, mc.count * 3);
+    for (let i = 0; i < pos.length; i++) pos[i] *= k;
+    // devolve o centro do campo pro colo do dente (y = 0)
+    for (let i = 1; i < pos.length; i += 3) pos[i] += meio;
+    g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    g.setAttribute('normal', new THREE.BufferAttribute(mc.normalArray.slice(0, mc.count * 3), 3));
+    // esmalte claro na coroa, raiz num tom de marfim mais quente
+    const cor = new Float32Array(pos.length), esm = new THREE.Color(0xEEE7D9), raiz = new THREE.Color(0xDCC596), tom = new THREE.Color();
+    for (let i = 0; i < pos.length; i += 3) {
+      const f = Math.min(1, Math.max(0, (pos[i + 1] + .5) / 3));
+      tom.copy(esm).lerp(raiz, f * f * (3 - 2 * f));
+      cor[i] = tom.r; cor[i + 1] = tom.g; cor[i + 2] = tom.b;
+    }
+    g.setAttribute('color', new THREE.BufferAttribute(cor, 3));
+    mc.geometry.dispose();
+    return (geoTipo[id] = g);
+  };
+
+  const curva = (pts) => new THREE.CatmullRomCurve3(pts.map(([x, z]) => new THREE.Vector3(x, 0, z)), false, 'centripetal');
+  const grupo = new THREE.Group();
+  const dentes = [];
+  const matEsmalte = new THREE.MeshPhysicalMaterial({ color: 0xffffff, vertexColors: true, roughness: .45, clearcoat: .35, clearcoatRoughness: .35, envMapIntensity: .6 });
+
+  for (const [arco, sup] of [[ARCO_SUP, true], [ARCO_INF, false]]) {
+    const cv = curva(arco), comp = cv.getLength();
+    for (const lado of [-1, 1]) {
+      let s = 0;
+      for (let n = 1; n <= 8; n++) {
+        const id = (sup ? 's' : 'i') + n, t = TIPOS[id];
+        s += t.w / 2 + .25;
+        const u = Math.min(1, s / comp);
+        const p = cv.getPointAt(u), tg = cv.getTangentAt(u);
+        s += t.w / 2 + .25;
+        p.x *= lado; tg.x *= lado;
+        const fora = new THREE.Vector3(-tg.z, 0, tg.x).multiplyScalar(lado);
+        if (fora.dot(new THREE.Vector3(p.x, 0, p.z - 5)) < 0) fora.negate();
+        const crista = sup ? -25 + (n > 5 ? .6 : 0) : -42 + Math.max(0, n - 3) * .9;
+        p.y = crista;
+        const m = new THREE.Mesh(geometria(id), matEsmalte);
+        // base: x ao longo do arco, y pra raiz (cima no superior), z pra fora (vestibular)
+        const eixoX = tg.clone().normalize(), eixoZ = fora.normalize();
+        const eixoY = new THREE.Vector3().crossVectors(eixoZ, eixoX).normalize();
+        if (eixoY.y < 0) eixoX.negate(), eixoY.negate();
+        const base = new THREE.Matrix4().makeBasis(eixoX, eixoY, eixoZ);
+        if (!sup) base.multiply(new THREE.Matrix4().makeRotationZ(Math.PI));
+        // inclinação: incisivos com a coroa pra frente
+        const inclina = n <= 2 ? (sup ? .3 : .16) : n === 3 ? .12 : .03;
+        base.multiply(new THREE.Matrix4().makeRotationX(-inclina));
+        m.matrixAutoUpdate = false;
+        m.matrix.copy(base).setPosition(p);
+        grupo.add(m);
+        // x positivo é o lado esquerdo do paciente
+        const fdi = (sup ? (p.x > 0 ? 2 : 1) : (p.x > 0 ? 3 : 4)) * 10 + n;
+        const ponta = new THREE.Vector3(0, -t.coroa * .55, t.d * .5 + 1.5).applyMatrix4(m.matrix);
+        const apice = new THREE.Vector3(0, t.raiz * .85, 0).applyMatrix4(m.matrix);
+        dentes.push({ fdi, id, nome: t.nome, raizes: t.raizes, mesh: m, ponta, apice, colo: p.clone(), fora: eixoZ.clone() });
+      }
+    }
+  }
+
+  // nervo alveolar inferior: entra no forame do ramo, corre sob as raízes e sai no forame mentual
+  const matNervo = new THREE.MeshStandardMaterial({ color: 0xE9B92F, emissive: 0xF2C230, emissiveIntensity: 0, roughness: .45, transparent: true, opacity: 0 });
+  const nervos = new THREE.Group();
+  for (const lado of [-1, 1]) {
+    const pts = [[-34.5, -6, -28], [-36, -16, -24.5], [-37, -30, -20], [-36.5, -44, -13], [-34, -53, -5], [-30.5, -56, 3], [-26.5, -56.5, 11], [-23.5, -56, 19], [-21.5, -54.5, 24]]
+      .map(([x, y, z]) => new THREE.Vector3(Math.abs(x) * lado, y, z));
+    const tubo = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts, false, 'centripetal'), 90, 1.25, 10), matNervo);
+    nervos.add(tubo);
+    // ramo mentual saindo pra frente
+    const fim = pts[pts.length - 1];
+    const mentual = [fim, new THREE.Vector3(fim.x * .93, -53, 28), new THREE.Vector3(fim.x * .8, -50.5, 31.5)];
+    nervos.add(new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(mentual), 20, .8, 8), matNervo));
+  }
+
+  // seio maxilar: cavidade de ar acima das raízes dos molares e pré-molares
+  const matSeio = new THREE.MeshPhysicalMaterial({ color: 0x5E9FD6, emissive: 0x3C86CC, emissiveIntensity: 0, roughness: .2, transparent: true, opacity: 0, depthWrite: false, side: THREE.DoubleSide });
+  const seios = new THREE.Group();
+  for (const lado of [-1, 1]) {
+    const g = new THREE.SphereGeometry(1, 40, 28);
+    // pirâmide arredondada: mais larga em cima, assoalho mais fino perto das raízes
+    const a = g.attributes.position;
+    for (let i = 0; i < a.count; i++) {
+      const y = a.getY(i);
+      const larg = .78 + .22 * Math.max(0, y);
+      a.setX(i, a.getX(i) * larg);
+      a.setZ(i, a.getZ(i) * (.85 + .15 * y));
+    }
+    g.computeVertexNormals();
+    const m = new THREE.Mesh(g, matSeio);
+    m.scale.set(9, 11, 13);
+    m.position.set(23 * lado, .5, 4);
+    m.rotation.z = -.18 * lado;
+    seios.add(m);
+  }
+
+  grupo.add(nervos, seios);
+  return { grupo, dentes, matEsmalte, matNervo, matSeio, nervos, seios, TIPOS };
+}
+
+// ===== a prancha em 3D: crânio real (BodyParts3D) colorido por osso, os 32 dentes, o nervo e o seio =====
 const palco = document.querySelector('.palco');
 const canvas = document.getElementById('cena3d');
 const jornada = document.getElementById('jornada');
 const semMovimento = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const leve = matchMedia('(max-width: 899px), (pointer: coarse)').matches;
-const N = 8, S = 1 / N, C = (i) => i / N;
+const modoPrint = /[?&]print/.test(location.search);
+const N = 4;
 const limita = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
-const rampa = (p, a, b) => limita((p - a) / (b - a));
 const suave = (t) => t * t * (3 - 2 * t);
-const janela = (p, a, b, c, d) => rampa(p, a, b) * (1 - rampa(p, c, d));
 
-function iniciar() {
+// cores de atlas: cada osso de uma cor
+const CORES = { frontal: 0xA9BDCC, parietal: 0xD9CCA9, temporal: 0x96BA9C, occipital: 0xCFC19E, esfenoide: 0xAC98C6,
+  zigomatico: 0xE6A65A, maxila: 0xE38E7B, nasal: 0x7FA9CB, lacrimal: 0xB6CD86, concha: 0xD3BE98, vomer: 0xD3BE98, mandibula: 0xDDB462 };
+const NUCA = new Set(['parietal', 'occipital', 'temporal', 'esfenoide', 'frontal']);
+const DENTRO = new Set(['concha', 'vomer']);
+
+// as quatro pranchas: câmera (alvo, distância, giro, inclinação) e o que aparece
+const QUADROS = [
+  { alvo: [0, 36, -6], dist: 700, giro: .32, incl: .05, osso: 1, raio: 0, num: 0, est: 0, rotulos: 1 },
+  { alvo: [0, -30, 10], dist: 390, giro: .62, incl: .14, osso: .62, raio: 1, num: 0, est: 0, rotulos: 0 },
+  { alvo: [3, -33, 14], dist: 305, giro: .5, incl: .04, osso: .5, raio: 1, num: 1, est: 0, rotulos: 0 },
+  { alvo: [8, -26, 0], dist: 345, giro: 1.42, incl: .05, osso: .5, raio: 1, num: 0, est: 1, rotulos: 0 },
+];
+
+async function iniciar() {
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
-  renderer.setPixelRatio(Math.min(devicePixelRatio, leve ? 1.5 : 1.75));
+  renderer.setPixelRatio(Math.min(devicePixelRatio, leve ? 1.6 : 1.75));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
-  renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.05;
-  renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-  renderer.localClippingEnabled = true;
-  renderer.setClearColor(0x070B12, 1);
+  renderer.setClearColor(0xFBF8F2, 1);
 
   const cena = new THREE.Scene();
-  cena.fog = new THREE.Fog(0x070B12, 11, 26);
   const pmrem = new THREE.PMREMGenerator(renderer);
   cena.environment = pmrem.fromScene(new RoomEnvironment(renderer), .04).texture;
-  const camera = new THREE.PerspectiveCamera(30, 1, .1, 80);
+  cena.add(new THREE.HemisphereLight(0xffffff, 0xcdbb9c, 1.25));
+  const chave = new THREE.DirectionalLight(0xffffff, 1.7); chave.position.set(220, 260, 380); cena.add(chave);
+  const contra = new THREE.DirectionalLight(0xfff0d8, .7); contra.position.set(-260, 80, -200); cena.add(contra);
+  const camera = new THREE.PerspectiveCamera(22, 1, 10, 4000);
 
-  // luz de palco: um foco de cima, contraluz dourada e um preenchimento frio
-  const foco = new THREE.SpotLight(0xfff1dc, 150, 24, .42, .8, 2);
-  foco.position.set(.6, 8.5, 2.4);
-  foco.target.position.set(0, .8, 0);
-  foco.castShadow = true;
-  foco.shadow.mapSize.set(leve ? 512 : 1024, leve ? 512 : 1024);
-  foco.shadow.bias = -.0004;
-  cena.add(foco, foco.target);
-  const contra = new THREE.DirectionalLight(0xC8A46A, 1.6); contra.position.set(-5, 3, -4); cena.add(contra);
-  const fria = new THREE.DirectionalLight(0x8fc4e6, .6); fria.position.set(5, 2, 4); cena.add(fria);
-  cena.add(new THREE.HemisphereLight(0x223047, 0x05070b, .5));
+  // ===== o crânio =====
+  const buf = await (await fetch('modelos/cranio.bin')).arrayBuffer();
+  const tam = new DataView(buf).getUint32(0, true);
+  const cab = JSON.parse(new TextDecoder().decode(new Uint8Array(buf, 4, tam)));
+  const base = 4 + tam;
+  const uRaio = { value: 0 };
+  const ossos = {};
+  const cranio = new THREE.Group();
+  cena.add(cranio);
+  for (const o of cab.ossos) {
+    const p16 = new Int16Array(buf, base + o.pos, o.nv * 3), pos = new Float32Array(o.nv * 3);
+    for (let i = 0; i < pos.length; i++) pos[i] = (p16[i] + 32500) * cab.passo + cab.min[i % 3];
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    g.setIndex(new THREE.BufferAttribute(new Uint16Array(buf, base + o.idx, o.ni), 1));
+    g.computeVertexNormals();
+    const mat = new THREE.MeshStandardMaterial({ color: CORES[o.id], roughness: .74, metalness: 0, envMapIntensity: .45, transparent: true });
+    // no modo transparente a borda do osso fica marcada e o meio some, como numa prancha de raio X
+    mat.onBeforeCompile = (sh) => {
+      sh.uniforms.uRaio = uRaio;
+      sh.fragmentShader = 'uniform float uRaio;\n' + sh.fragmentShader.replace('#include <opaque_fragment>', '#include <opaque_fragment>\n  float borda = 1.0 - abs(dot(normalize(normal), normalize(vViewPosition)));\n  gl_FragColor.a *= mix(1.0, .1 + .95 * pow(borda, 1.5), uRaio);');
+    };
+    const m = new THREE.Mesh(g, mat);
+    m.renderOrder = 2;
+    cranio.add(m);
+    ossos[o.id] = m;
+  }
 
-  const chao = new THREE.Mesh(new THREE.PlaneGeometry(80, 80), new THREE.MeshStandardMaterial({ color: 0x0d131d, roughness: .6, metalness: .15 }));
-  chao.rotation.x = -Math.PI / 2;
-  chao.receiveShadow = true;
-  cena.add(chao);
+  // ===== dentes, nervo e seio =====
+  const boca = montarBoca(THREE, MarchingCubes, { res: leve ? 34 : 40 });
+  cena.add(boca.grupo);
+  const porFdi = Object.fromEntries(boca.dentes.map((d) => [d.fdi, d]));
 
-  const peca = new THREE.Group();
-  cena.add(peca);
-
-  // bloco de osso
-  const matOsso = leve
-    ? new THREE.MeshPhysicalMaterial({ color: 0xbcd6e6, roughness: .3, transparent: true, opacity: .3, depthWrite: false, clearcoat: .6 })
-    : new THREE.MeshPhysicalMaterial({ color: 0xdbeaf3, roughness: .3, transmission: .93, thickness: 1.4, ior: 1.38, attenuationColor: new THREE.Color(0x9fcbe6), attenuationDistance: 3, clearcoat: .4, clearcoatRoughness: .3 });
-  const osso = new THREE.Mesh(new RoundedBoxGeometry(2.5, 1.5, 1.6, 6, .2), matOsso);
-  osso.position.y = .75;
-  peca.add(osso);
-
-  // corte da tomografia: guarda o que está atrás do plano (z menor que a constante)
-  const corte = new THREE.Plane(new THREE.Vector3(0, 0, -1), 50);
-
-  // o dente, modelado como um campo de esferas que se fundem (coroa com cúspides e duas raízes curvas)
-  const dente = new THREE.Group();
-  dente.position.y = 1.33;
-  peca.add(dente);
-  const matDente = new THREE.MeshPhysicalMaterial({ color: 0xf3ede2, roughness: .3, clearcoat: .8, clearcoatRoughness: .18, sheen: .5, sheenColor: new THREE.Color(0xffffff), sheenRoughness: .5, clippingPlanes: [corte] });
-  const mc = new MarchingCubes(leve ? 52 : 72, matDente, false, false, 120000);
-  mc.isolation = 80;
-  mc.reset();
-  const bola = (x, y, z, s) => mc.addBall(x, y, z, s, 12);
-  bola(.5, .6, .5, .75);
-  bola(.435, .62, .5, .55); bola(.565, .62, .5, .55);
-  bola(.5, .62, .44, .45); bola(.5, .62, .56, .45);
-  [[.44, .45], [.56, .45], [.44, .55], [.56, .55]].forEach(([x, z]) => bola(x, .722, z, .44));
-  bola(.5, .555, .5, .42); bola(.5, .52, .5, .36); bola(.5, .48, .5, .3);
-  const raiz = (x0, curva) => {
-    const pts = [];
-    for (let i = 0; i <= 9; i++) {
-      const t = i / 9;
-      const x = x0 + t * t * curva, y = .5 - t * .36;
-      bola(x, y, .5, .34 * (1 - t * .75));
-      pts.push(new THREE.Vector3((x * 2 - 1) * 1.15, (y * 2 - 1) * 1.15, 0));
+  // ponto da superfície de um osso mais perto da frente, perto de (x, y)
+  const naFrente = (id, x, y, raio = 7) => {
+    const a = ossos[id].geometry.attributes.position;
+    let melhor = null, z = -Infinity;
+    for (let i = 0; i < a.count; i++) {
+      const dx = a.getX(i) - x, dy = a.getY(i) - y;
+      if (dx * dx + dy * dy < raio * raio && a.getZ(i) > z) { z = a.getZ(i); melhor = new THREE.Vector3(a.getX(i), a.getY(i), z); }
     }
-    return pts;
+    return melhor || new THREE.Vector3(x, y, 40);
   };
-  const raizM = raiz(.455, .04), raizD = raiz(.55, .035);
-  if (mc.update) mc.update(); else if (mc.render) mc.render();
-  mc.scale.setScalar(1.15);
-  mc.castShadow = true;
-  mc.frustumCulled = false;
-  dente.add(mc);
-  // o lado de dentro aparece no corte como dentina sólida
-  const recheio = new THREE.Mesh(mc.geometry, new THREE.MeshBasicMaterial({ color: 0xd8c09a, side: THREE.BackSide, clippingPlanes: [corte] }));
-  recheio.scale.copy(mc.scale);
-  recheio.frustumCulled = false;
-  dente.add(recheio);
 
-  // polpa e canais das raízes, visíveis só no corte
-  const matPolpa = new THREE.MeshStandardMaterial({ color: 0xb8475c, emissive: 0x5c1020, emissiveIntensity: .7, roughness: .5, side: THREE.DoubleSide, clippingPlanes: [corte] });
-  const camara = new THREE.Mesh(new THREE.CapsuleGeometry(.1, .24, 8, 16), matPolpa);
-  camara.rotation.z = Math.PI / 2;
-  camara.position.y = .2;
-  dente.add(camara);
-  [raizM, raizD].forEach((pts) => dente.add(new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts.slice(0, 9)), 40, .028, 8), matPolpa)));
+  // ===== etiquetas de atlas =====
+  const etq = (nome) => document.querySelector(`[data-etq="${nome}"]`);
+  const etiquetas = [
+    { el: etq('frontal'), v: naFrente('frontal', 30, 62), on: (s) => s.rotulos },
+    { el: etq('zigomatico'), v: naFrente('zigomatico', 46, 6), on: (s) => s.rotulos },
+    { el: etq('maxila'), v: naFrente('maxila', 26, -12), on: (s) => s.rotulos },
+    { el: etq('mandibula'), v: naFrente('mandibula', 30, -58), on: (s) => s.rotulos },
+    { el: etq('r1'), v: porFdi[21].apice, on: (s) => (largura < 600 ? 0 : s.num) },
+    { el: etq('r3'), v: porFdi[26].apice, on: (s) => s.num },
+    { el: etq('r2'), v: porFdi[36].apice, on: (s) => s.num },
+    { el: etq('nervo'), v: new THREE.Vector3(30, -56.5, 4), on: (s) => s.est },
+    { el: etq('seio'), v: new THREE.Vector3(30, 9, 4), on: (s) => s.est },
+  ];
+  const numeros = document.getElementById('numeros');
+  const nums = boca.dentes.map((d) => {
+    const s = document.createElement('span');
+    s.textContent = d.fdi;
+    numeros.appendChild(s);
+    return { el: s, d };
+  });
 
-  // capuz de gengiva sobre a metade de trás da coroa
-  const matCapuz = new THREE.MeshPhysicalMaterial({ color: 0xe07d8b, roughness: .42, sheen: 1, sheenColor: new THREE.Color(0xffc2cb), transparent: true, opacity: 0, side: THREE.DoubleSide, clippingPlanes: [corte] });
-  const capuz = new THREE.Mesh(new THREE.SphereGeometry(.42, 40, 20, 0, Math.PI, 0, Math.PI / 2.3), matCapuz);
-  capuz.position.set(.04, .33, 0);
-  capuz.rotation.y = Math.PI / 2;
-  dente.add(capuz);
+  const tmp = new THREE.Vector3(), olhar = new THREE.Vector3();
+  let largura = 1, altura = 1;
+  const naTela = (v) => {
+    tmp.copy(v).project(camera);
+    return { x: (tmp.x * .5 + .5) * largura, y: (-tmp.y * .5 + .5) * altura, atras: tmp.z > 1 };
+  };
+  const posicionaEtiquetas = (s) => {
+    etiquetas.forEach((e) => {
+      const o = e.on(s);
+      if (o <= .01) { e.el.style.opacity = 0; return; }
+      const p = naTela(e.v);
+      const w = e.el.offsetWidth, limite = largura - 20;
+      const esq = p.x + w > limite;
+      if (p.atras || (esq && p.x - w < 12)) { e.el.style.opacity = 0; return; }
+      e.el.classList.toggle('esq', esq);
+      e.el.style.opacity = o.toFixed(3);
+      e.el.style.transform = `translate(${p.x.toFixed(1)}px,${p.y.toFixed(1)}px)${esq ? ' translateX(-100%)' : ''}`;
+    });
+    nums.forEach(({ el, d }) => {
+      if (s.num <= .01) { el.style.opacity = 0; return; }
+      // só os números dos dentes virados para a câmera
+      const frente = olhar.copy(camera.position).sub(d.colo).normalize().dot(d.fora);
+      const vis = limita((frente - .05) / .25) * s.num;
+      if (vis <= .01) { el.style.opacity = 0; return; }
+      const p = naTela(d.ponta);
+      el.style.opacity = vis.toFixed(3);
+      el.style.transform = `translate(${p.x.toFixed(1)}px,${p.y.toFixed(1)}px)`;
+    });
+  };
 
-  // canal mandibular, logo abaixo das raízes
-  const curvaNervo = new THREE.CatmullRomCurve3([[-1.15, .34, .22], [-.6, .27, .1], [0, .25, 0], [.6, .29, -.08], [1.15, .38, -.18]].map((a) => new THREE.Vector3(...a)));
-  const matNervo = new THREE.MeshStandardMaterial({ color: 0x1d3446, emissive: 0x7fd3ff, emissiveIntensity: 0, roughness: .4 });
-  peca.add(new THREE.Mesh(new THREE.TubeGeometry(curvaNervo, 100, .075, 16), matNervo));
-  const luzNervo = new THREE.PointLight(0x7fd3ff, 0, 3, 2);
-  luzNervo.position.set(0, .35, 0);
-  peca.add(luzNervo);
-
-  // alvéolo que fica depois da extração e cicatriza
-  const matAlveolo = new THREE.MeshStandardMaterial({ color: 0x3a1820, roughness: .8, transparent: true, opacity: 0 });
-  const alveolo = new THREE.Mesh(new THREE.CircleGeometry(.34, 48), matAlveolo);
-  alveolo.rotation.x = -Math.PI / 2;
-  alveolo.position.y = 1.506;
-  peca.add(alveolo);
-  const corFerida = new THREE.Color(0x3a1820), corGengiva = new THREE.Color(0xe58593);
-
-  // moldura da tomografia que acompanha o corte
-  const scan = new THREE.Group();
-  const matMoldura = new THREE.LineBasicMaterial({ color: 0xa9d8f2, transparent: true, opacity: 0 });
-  const matLamina = new THREE.MeshBasicMaterial({ color: 0xa9d8f2, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide });
-  scan.add(new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.PlaneGeometry(2.9, 2.7)), matMoldura));
-  scan.add(new THREE.Mesh(new THREE.PlaneGeometry(2.9, 2.7), matLamina));
-  scan.position.y = 1.3;
-  peca.add(scan);
-
-  // ===== câmera e giro por capítulo =====
-  const quadros = [
-    { pos: [3.8, 3.1, 7.0], alvo: [0, 1.15, 0], giro: -.55 },
-    { pos: [-3.7, 1.6, 5.7], alvo: [0, 1.05, 0], giro: .85 },
-    { pos: [1.5, 3.7, 3.4], alvo: [0, 1.95, 0], giro: .35 },
-    { pos: [.4, 1.05, 6.3], alvo: [0, .85, 0], giro: 0 },
-    { pos: [0, 1.75, 6.7], alvo: [0, 1.3, 0], giro: 0 },
-    { pos: [4.4, 3.9, 7.4], alvo: [0, 1.2, 0], giro: -.5 },
-    { pos: [3.2, 3.5, 7.8], alvo: [0, 2.5, 0], giro: .25 },
-    { pos: [.8, 6.9, 4.4], alvo: [0, 1.4, 0], giro: .25 }
-  ].map((q) => ({ pos: new THREE.Vector3(...q.pos), alvo: new THREE.Vector3(...q.alvo), giro: q.giro }));
-  const pos = new THREE.Vector3(), alvo = new THREE.Vector3();
-  const enquadra = (p) => {
+  // ===== estado da prancha pelo progresso =====
+  const est = {}, alvo = new THREE.Vector3();
+  const mistura = (p) => {
     let i, j, t;
     if (semMovimento) { i = j = Math.min(N - 1, Math.floor(p * N)); t = 0; }
     else {
       const k = p * N - .5;
       i = limita(Math.floor(k), 0, N - 1); j = Math.min(N - 1, i + 1);
-      t = k < 0 ? 0 : suave(limita(k - i));
+      t = k < 0 ? 0 : suave(limita((k - i - .1) / .8));
     }
-    pos.lerpVectors(quadros[i].pos, quadros[j].pos, t);
-    alvo.lerpVectors(quadros[i].alvo, quadros[j].alvo, t);
-    camera.position.copy(pos);
-    camera.lookAt(alvo);
-    return quadros[i].giro + (quadros[j].giro - quadros[i].giro) * t;
+    const a = QUADROS[i], b = QUADROS[j];
+    for (const c of ['dist', 'giro', 'incl', 'osso', 'raio', 'num', 'est', 'rotulos']) est[c] = a[c] + (b[c] - a[c]) * t;
+    alvo.set(...a.alvo).lerp(new THREE.Vector3(...b.alvo), t);
+    return est;
   };
 
-  // etiquetas em HTML presas a pontos do 3D
-  const etiquetas = [
-    { el: document.querySelector('[data-etq="capuz"]'), no: dente, v: new THREE.Vector3(.3, .62, .1), on: (p) => janela(p, C(2) + .3 * S, C(2) + .55 * S, C(3) - .05 * S, C(3) + .1 * S) },
-    { el: document.querySelector('[data-etq="canal"]'), no: peca, v: new THREE.Vector3(.85, .29, -.06), on: (p) => janela(p, C(3) + .4 * S, C(3) + .6 * S, C(4) + .05 * S, C(4) + .2 * S) },
-    { el: document.querySelector('[data-etq="polpa"]'), no: dente, v: new THREE.Vector3(0, .2, 0), on: (p) => janela(p, C(4) + .5 * S, C(4) + .7 * S, C(5) - .1 * S, C(5) + .05 * S) },
-    { el: document.querySelector('[data-etq="alveolo"]'), no: peca, v: new THREE.Vector3(.2, 1.5, 0), on: (p) => janela(p, C(7) + .15 * S, C(7) + .35 * S, C(7) + .8 * S, C(7) + .9 * S) }
-  ];
-  const tmp = new THREE.Vector3();
-  let largura = 1, altura = 1;
-  const posicionaEtiquetas = (p) => {
-    etiquetas.forEach((e) => {
-      const o = e.on(p);
-      if (o <= 0) { e.el.style.opacity = 0; return; }
-      e.no.localToWorld(tmp.copy(e.v)).project(camera);
-      if (tmp.z > 1) { e.el.style.opacity = 0; return; }
-      const x = (tmp.x * .5 + .5) * largura, y = (-tmp.y * .5 + .5) * altura;
-      const w = e.el.offsetWidth, limite = largura > 900 ? largura - 190 : largura - 16;
-      const esq = x + w > limite;
-      if (esq && x - w < 16) { e.el.style.opacity = 0; return; }
-      e.el.classList.toggle('esq', esq);
-      e.el.style.opacity = o.toFixed(3);
-      e.el.style.transform = `translate(${x.toFixed(1)}px,${y.toFixed(1)}px)${esq ? ' translateX(-100%)' : ''}`;
+  let mx = 0, my = 0, mxS = 0, myS = 0;
+  if (matchMedia('(hover: hover) and (pointer: fine)').matches && !semMovimento) {
+    palco.addEventListener('pointermove', (e) => { mx = e.clientX / innerWidth - .5; my = e.clientY / innerHeight - .5; });
+    palco.addEventListener('pointerleave', () => { mx = my = 0; });
+  } else if (!semMovimento && 'DeviceOrientationEvent' in window && typeof DeviceOrientationEvent.requestPermission !== 'function') {
+    let base = null;
+    addEventListener('deviceorientation', (e) => {
+      if (e.gamma == null) return;
+      if (!base) base = { g: e.gamma, b: e.beta };
+      mx = limita((e.gamma - base.g) / 50, -.5, .5);
+      my = limita((e.beta - base.b) / 60, -.5, .5);
     });
-  };
+  }
 
-  // ===== estado da cena pelo progresso =====
-  const clareia = document.getElementById('clareia');
   const relogio = new THREE.Clock();
   const aplica = (p) => {
+    const s = mistura(p);
     const tempo = relogio.getElapsedTime();
-    const parado = semMovimento ? 0 : 1;
-    const giro = enquadra(p);
-    const balanço = parado * (Math.sin(tempo * .45) * .14 * (1 - rampa(p, .02, C(1) + .3 * S)) + Math.sin(tempo * .3) * .03 * (1 - janela(p, C(4) - .2 * S, C(4), C(5), C(5) + .2 * S)));
-    peca.rotation.y = giro + balanço;
+    const vivo = semMovimento || modoPrint ? 0 : 1;
+    mxS += (mx - mxS) * .06; myS += (my - myS) * .06;
+    const giro = s.giro + vivo * (Math.sin(tempo * .35) * .05 * s.rotulos + mxS * .16);
+    const incl = s.incl + vivo * myS * .08;
+    const perto = largura < 600 ? 1 - .1 * s.raio : 1;
+    camera.position.set(Math.sin(giro) * Math.cos(incl), Math.sin(incl), Math.cos(giro) * Math.cos(incl)).multiplyScalar(s.dist * perto).add(alvo);
+    camera.lookAt(alvo);
 
-    matCapuz.opacity = janela(p, C(2), C(2) + .4 * S, C(3) + .1 * S, C(3) + .5 * S) * .92;
-    capuz.scale.setScalar(.75 + .25 * rampa(p, C(2), C(2) + .5 * S));
-
-    const brilho = 2.4 * rampa(p, C(3), C(3) + .5 * S) * (1 - .6 * rampa(p, C(5), C(5) + .5 * S));
-    matNervo.emissiveIntensity = brilho * (1 + parado * .12 * Math.sin(tempo * 3));
-    luzNervo.intensity = brilho * 1.4;
-
-    const entra = suave(rampa(p, C(4) + .1 * S, C(4) + .55 * S)), volta = suave(rampa(p, C(5) - .05 * S, C(5) + .3 * S));
-    const fundo = entra * (1 - volta);
-    corte.constant = fundo > 0 ? .95 - fundo * .95 : 50;
-    scan.position.z = corte.constant;
-    matMoldura.opacity = fundo > 0 && fundo < 1 ? .9 : fundo * .45;
-    matLamina.opacity = (fundo > 0 && fundo < 1 ? .1 : 0) + fundo * .02;
-
-    const sai = suave(rampa(p, C(6) + .15 * S, C(6) + .8 * S));
-    const some = rampa(p, C(7), C(7) + .5 * S);
-    dente.position.y = 1.33 + sai * 1.9 + some * 3.5 + parado * sai * Math.sin(tempo * 1.2) * .04;
-    dente.rotation.z = sai * .35;
-    dente.rotation.y = sai * 1.2;
-
-    const cura = rampa(p, C(7), C(7) + .5 * S);
-    matAlveolo.opacity = rampa(p, C(6) + .3 * S, C(6) + .7 * S) * (1 - .85 * rampa(p, C(7) + .55 * S, C(7) + .9 * S));
-    matAlveolo.color.copy(corFerida).lerp(corGengiva, cura);
-
-    const luz = rampa(p, .955, .995);
-    clareia.style.opacity = luz.toFixed(3);
-    renderer.toneMappingExposure = 1.05 + luz * 1.6;
+    uRaio.value = s.raio;
+    for (const [id, m] of Object.entries(ossos)) {
+      let op = s.osso;
+      if (NUCA.has(id)) op *= 1 - .8 * s.raio;
+      if (DENTRO.has(id)) op *= 1 - s.raio;
+      m.material.opacity = op;
+      m.material.depthWrite = s.raio < .02;
+      m.visible = op > .01;
+    }
+    const brilho = s.est * (1 + vivo * .15 * Math.sin(tempo * 2.4));
+    boca.matNervo.opacity = s.est;
+    boca.matNervo.emissiveIntensity = .55 * brilho;
+    boca.matSeio.opacity = .38 * s.est;
+    boca.matSeio.emissiveIntensity = .35 * brilho;
+    boca.nervos.visible = boca.seios.visible = s.est > .01;
 
     renderer.render(cena, camera);
-    posicionaEtiquetas(p);
+    posicionaEtiquetas(s);
   };
 
   const ajusta = () => {
@@ -1211,24 +1462,22 @@ function iniciar() {
     renderer.setSize(largura, altura, false);
     const asp = largura / Math.max(1, altura);
     camera.aspect = asp;
-    camera.fov = asp < 1 ? 2 * Math.atan(Math.tan(15.5 * Math.PI / 180) / asp) * 180 / Math.PI : 30;
-    // o texto ocupa a esquerda no desktop e a parte de baixo no celular: o dente vai pro lado livre
-    if (asp >= 1.1) camera.setViewOffset(largura, altura, -largura * .19, 0, largura, altura);
-    else camera.setViewOffset(largura, altura, 0, altura * .2, largura, altura);
+    camera.fov = asp < 1 ? 2 * Math.atan(Math.tan(11 * Math.PI / 180) * .78 / asp) * 180 / Math.PI : 22;
+    // o texto fica à esquerda no desktop e embaixo no celular: a prancha ocupa o lado livre
+    if (asp >= 1.1) camera.setViewOffset(largura, altura, -largura * .15, 0, largura, altura);
+    else camera.setViewOffset(largura, altura, 0, altura * .18, largura, altura);
     camera.updateProjectionMatrix();
   };
   new ResizeObserver(ajusta).observe(palco);
   ajusta();
 
-  let suaveP = window.__progresso ? window.__progresso() : 0, rodando = false, visivel = true;
+  let suaveP = window.__progresso ? window.__progresso() : 0, rodando = false, visivel = true, ultimoP = -1;
   // ?print: desenha só quando a rolagem muda (prints automáticos sem placa de vídeo)
-  const modoPrint = /[?&]print/.test(location.search);
-  let ultimoP = -1;
   const quadro = () => {
     if (!visivel) { rodando = false; return; }
     const alvoP = window.__progresso ? window.__progresso() : 0;
     if (modoPrint) { if (alvoP !== ultimoP) { ultimoP = suaveP = alvoP; aplica(alvoP); } setTimeout(() => requestAnimationFrame(quadro), 250); return; }
-    suaveP += (alvoP - suaveP) * (semMovimento ? 1 : .09);
+    suaveP += (alvoP - suaveP) * (semMovimento ? 1 : .08);
     if (Math.abs(alvoP - suaveP) < .00005) suaveP = alvoP;
     aplica(suaveP);
     requestAnimationFrame(quadro);
@@ -1237,10 +1486,12 @@ function iniciar() {
     visivel = e.isIntersecting;
     if (visivel && !rodando) { rodando = true; requestAnimationFrame(quadro); }
   }).observe(jornada);
+  aplica(suaveP);
   document.documentElement.classList.add('com-3d');
+  window.pronto = true;
 }
 
-try { iniciar(); } catch (e) { document.documentElement.classList.add('sem-3d'); console.warn('3D indisponível', e); }
+iniciar().catch((e) => { document.documentElement.classList.add('sem-3d'); window.pronto = true; console.warn('3D indisponível', e); });
 </script>
 </body>
 </html>
